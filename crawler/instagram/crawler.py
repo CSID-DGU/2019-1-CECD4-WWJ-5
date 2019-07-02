@@ -62,7 +62,7 @@ def output(data, filepath, forNumber):
                 start = start + 11
                 end = readLine.find('\"}')
                 print(readLine[start:end])
-                #readLine = readLine[end:]
+                readLine = readLine[end+2:]
                 #print(readLine)
     else:
         print(out)

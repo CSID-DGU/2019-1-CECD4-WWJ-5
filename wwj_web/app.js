@@ -1,11 +1,10 @@
 var express = require('express'); //웹서버 사용
+var session = require('express-session')
 var expressLayouts = require('express-ejs-layouts')
 var bodyParser = require('body-parser');
-var ejs = require('ejs')
-var fs = require('fs')
 var app = express();
 
-
+var mysql = require('mysql')
 
 app.locals.pretty = true; // html code readability
 app.set('views', './views');

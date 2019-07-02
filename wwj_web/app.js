@@ -14,9 +14,6 @@ app.use(express.static(__dirname + '/views'));
 app.use(bodyParser.urlencoded({extended:true}));
 
 
-var router = require('./routes/index.js')(app);
-app.use('/', router);
-
 app.listen(3303, function(){
   console.log('Server Start...');
 })

@@ -10,7 +10,6 @@ app.set('views', './views');
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.engine('html', require('ejs').renderFile);
-app.use(expressLayouts);
 app.use(express.static(__dirname + '/views'));
 app.use(bodyParser.urlencoded({extended:true}));
 

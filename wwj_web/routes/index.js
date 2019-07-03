@@ -8,11 +8,7 @@ module.exports = function (app) {
 
   router.get('/', function(req, res){
     res.status(200);
-    res.render('index', {
-			url: req.url,
-      login: req.session.login,
-      userid: req.session.userID,
-    });
+    res.render('index');
   })
 
   return router;

@@ -11,5 +11,20 @@ module.exports = function (app) {
     res.render('index');
   })
 
+  router.get('/about', function(req, res){
+    res.status(200);
+    res.render('about');
+  })
+
+  router.get('/blog1', function(req, res){
+    res.status(200);
+    res.render('blog-standard');
+  })
+
+  router.get('/blog2', function(req, res){
+    res.status(200);
+    res.render('blog-single');
+  })
+
   return router;
 };

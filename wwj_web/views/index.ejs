@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <html lang="ko">
+<head>
+  <title>WWJ</title>
+
+  <meta charset="utf-8">
+  <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="">
+
   <!-- Google Fonts -->
   <link href='https://fonts.googleapis.com/css?family=Poppins:400,600%7CHind:400,400i,700' rel='stylesheet'>
 
@@ -15,6 +23,7 @@
   <link rel="apple-touch-icon" sizes="72x72" href="/img/apple-touch-icon-72x72.png">
   <link rel="apple-touch-icon" sizes="114x114" href="/img/apple-touch-icon-114x114.png">
 
+</head>
 <style type="text/css">
   body {
     color: #566787;
@@ -148,8 +157,94 @@
     margin: 100px auto;
   }
 </style>
+<body class="relative">
 
-<body>
+  <!-- Preloader -->
+  <div class="loader-mask">
+    <div class="loader"></div>
+  </div>
+
+  <!-- Navigation -->
+  <header class="nav-type-1">
+    <nav class="navbar">
+      <div class="header-wrap relative">
+
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <!-- Logo -->
+          <div class="logo-container">
+            <div class="logo-wrap">
+              <a href="/">
+                <img class="logo" src="/img/logo_dark.png" alt="logo">
+              </a>
+            </div>
+          </div>
+        </div> <!-- end navbar-header -->
+
+        <div class="nav-wrap">
+          <div class="collapse navbar-collapse" id="navbar-collapse">
+
+            <ul class="nav navbar-nav">
+              <!-- <% if(login == 'login'){ %>
+              <li>
+                  <a>Hello <%- username %></a>
+              </li>
+              <li class="nav-item-toggle active">
+                <a href="/">Home</a>
+              </li>
+              <li>
+                <a href="/about">About</a>
+              </li>
+              <li>
+                <a href="/blog1">Blog1</a>
+              </li>
+              <li>
+                <a href="/blog2">Blog2</a>
+              </li>
+              <li>
+                  <a href="/logout">Logout</a></li>
+              </li>
+              <% } else{ %> -->
+              <li class="nav-item-toggle active">
+                <a href="/">Home</a>
+              </li>
+              <li>
+                  <a href="#ModalLogin" data-toggle="modal">Login</a>
+              </li>
+              <li>
+                  <a href="#ModalRegistration" data-toggle="modal">Sign Up</a>
+              </li>
+              <!-- <% } %> -->
+            </ul>
+          </div>
+        </div> <!-- end nav-wrap -->
+
+      </div> <!-- end header wrap -->
+
+
+      <!-- Nav trigger -->
+      <div id="nav-trigger">
+        <div id="nav-icon">
+          <div class="nav-icon-inner">
+            <div id="nav-icon-trigger" class="nav-icon-trigger">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </div> <!-- end nav trigger -->
+
+    </nav> <!-- end navbar -->
+  </header>
+
   <main class="main-wrapper oh">
     <!-- Hero Slider -->
     <section class="section-wrap nopadding gradient-overlay pl-80">
@@ -178,6 +273,129 @@
 
     </section> <!-- end hero slider -->
   </main> <!-- end main wrapper -->
+  <!-- Modal -->
+  <div id="ModalLogin" class="modal fade">
+      <div class="modal-dialog modal-login">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h4 class="modal-title">Login</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              </div>
+              <div class="modal-body">
+                  <form name="login">
+                      <!--form action="/login" method="post"-->
+                      <div class="form-group">
+                          <div class="input-group">
+                              <span class="input-group-addon"><i class="fas fa-pen"></i></span>
+                              <input type="text" class="form-control" id="input_ID" name="userID" placeholder="ID"
+                                  required="required">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <div class="input-group">
+                              <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                              <input type="password" class="form-control" id="input_PW" name="userPW" placeholder="Password"
+                                  required="required">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <button type="button" id="login_btn" class="btn btn-primary btn-block btn-lg">로그인</button>
+                      </div>
+                      <script>
+                          $("#login_btn").click(function () {
+                              var id = $("input[name=userID]").val();
+                              var pw = $("input[name=userPW]").val();
+                              if (id != "" || pw != "")
+                                  $.post('/login', { userID: id, userPW: pw }, function (data) {
+                                      if (data.msg != null) {
+                                          alert(data.msg);
+                                      } else {
+                                          window.location.href = "/";
+                                      }
+                                  })
+
+                          });
+                          $("#input_ID").keydown(function (e) {
+                              if (e.keyCode == 13) {
+                                  var id = $("input[name=userID]").val();
+                                  var pw = $("input[name=userPW]").val();
+                                  if (id != "" || pw != "")
+                                      $.post('/login', { userID: id, userPW: pw }, function (data) {
+                                          if (data.msg != null) {
+                                              alert(data.msg);
+                                          } else {
+                                              window.location.href = "/";
+                                          }
+                                      })
+                              }
+                          })
+                          $("#input_PW").keydown(function (e) {
+                              if (e.keyCode == 13) {
+                                  var id = $("input[name=userID]").val();
+                                  var pw = $("input[name=userPW]").val();
+                                  if (id != "" || pw != "")
+                                      $.post('/login', { userID: id, userPW: pw }, function (data) {
+                                          if (data.msg != null) {
+                                              alert(data.msg);
+                                          } else {
+                                              window.location.href = "/";
+                                          }
+                                      })
+                              }
+                          })
+                      </script>
+
+                  </form>
+              </div>
+              <div class="modal-footer"></div>
+          </div>
+      </div>
+  </div>
+  <div id="ModalRegistration" class="modal fade">
+      <div class="modal-dialog modal-login">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h4 class="modal-title">Sign Up</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              </div>
+              <div class="modal-body">
+                  <form action="/join" method="post">
+                      <div class="form-group">
+                          <div class="input-group">
+                              <span class="input-group-addon"><i class="fas fa-pen"></i></span>
+                              <input type="text" class="form-control" name="new_userID" placeholder="ID" required="required">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <div class="input-group">
+                              <span class="input-group-addon"><i class="fas fa-key"></i></span>
+                              <input type="password" class="form-control" name="new_userPW" placeholder="Password"
+                                  required="required">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <div class="input-group">
+                              <span class="input-group-addon"><i class="fas fa-unlock"></i></span>
+                              <input type="password" class="form-control" name="new_userPW_confirm" placeholder="Password-Confirm"
+                                  required="required">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <div class="input-group">
+                              <span class="input-group-addon"><i class="fas fa-pen-nib"></i></span>
+                              <input type="text" class="form-control" name="new_userName" placeholder="User Name"
+                                  required="required">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <button type="submit" class="btn btn-primary btn-block btn-lg">Sign Up</button>
+                      </div>
+                  </form>
+              </div>
+              <div class="modal-footer"></div>
+          </div>
+      </div>
+  </div>
 
   <!-- jQuery Scripts -->
   <script type="text/javascript" src="/js/jquery.min.js"></script>

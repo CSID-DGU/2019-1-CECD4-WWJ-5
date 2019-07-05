@@ -1,6 +1,5 @@
 var express = require('express'); //웹서버 사용
 var session = require('express-session')
-, expressLayouts = require('express-ejs-layouts')
 var bodyParser = require('body-parser');
 var app = express();
 
@@ -9,7 +8,6 @@ var mysql = require('mysql')
 app.locals.pretty = true; // html code readability
 app.set('views', './views');
 app.set('view engine', 'ejs');
-app.use(expressLayouts);
 app.use(express.static('public'));
 //app.engine('html', require('ejs').renderFile);
 app.use(express.static(__dirname + '/views'));

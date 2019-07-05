@@ -27,7 +27,7 @@ module.exports = function (app) {
     var id = req.body.userID;
     var pw = req.body.userPW;
     res.status(200);
-    var queryString = 'select * from user where userid=? and userpw=?'
+    var queryString = 'select * from user where userid=? and password=?'
     connection.query(queryString, [id, pw], function(error, data){
       if(error){
         console.log(error);

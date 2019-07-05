@@ -282,7 +282,7 @@
                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
               </div>
               <div class="modal-body">
-                  <form name="login">
+                  <form name="login" action="/login" method="post">
                       <!--form action="/login" method="post"-->
                       <div class="form-group">
                           <div class="input-group">
@@ -301,7 +301,7 @@
                       <div class="form-group">
                           <button type="button" id="login_btn" class="btn btn-primary btn-block btn-lg">로그인</button>
                       </div>
-                      <script>
+                      <!-- <script>
                           $("#login_btn").click(function () {
                               var id = $("input[name=userID]").val();
                               var pw = $("input[name=userPW]").val();
@@ -343,7 +343,7 @@
                                       })
                               }
                           })
-                      </script>
+                      </script> -->
 
                   </form>
               </div>

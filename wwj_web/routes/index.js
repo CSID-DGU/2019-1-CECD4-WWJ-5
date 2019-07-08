@@ -10,8 +10,8 @@ module.exports = function (app) {
     mode : 'text',
     pythonPath : '',
     pythonOptions : ['-u'],
-    //scriptPath : '../crawler/tweeter',
-    scriptPath : '',
+    scriptPath : '../crawler/tweeter',
+    //scriptPath : '',
     args : ['value1', 'value2', 'value3']
   };
 

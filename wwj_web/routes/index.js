@@ -4,7 +4,7 @@ module.exports = function (app) {
   var mysql = require('mysql');
   var JSAlert = require("js-alert");
   var url = require('url');
-  var PythonShell = require('python-shell');
+  let {PythonShell} = require('python-shell');
 
   var options = {
     mode : 'text',

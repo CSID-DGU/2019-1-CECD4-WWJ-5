@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-  <title>WWJ</title>
+  <title>Cupli</title>
 
   <meta charset="utf-8">
   <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
@@ -24,7 +24,139 @@
   <link rel="apple-touch-icon" sizes="114x114" href="/img/apple-touch-icon-114x114.png">
 
 </head>
+<style type="text/css">
+  body {
+    color: #566787;
+    background: #f5f5f5;
+    font-family: 'Roboto', sans-serif;
+  }
 
+  .modal-login {
+    width: 350px;
+  }
+
+  .modal-login .modal-content {
+    padding: 20px;
+    border-radius: 5px;
+    border: none;
+  }
+
+  .modal-login .modal-header {
+    border-bottom: none;
+    position: relative;
+    justify-content: center;
+  }
+
+  .modal-login .close {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+  }
+
+  .modal-login h4 {
+    color: #636363;
+    text-align: center;
+    font-size: 26px;
+    margin-top: 0;
+  }
+
+  .modal-login .modal-content {
+    color: #999;
+    border-radius: 1px;
+    margin-bottom: 15px;
+    background: #fff;
+    border: 1px solid #f3f3f3;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    padding: 25px;
+  }
+
+  .modal-login .form-group {
+    margin-bottom: 20px;
+  }
+
+  .modal-login label {
+    font-weight: normal;
+    font-size: 13px;
+  }
+
+  .modal-login .form-control {
+    min-height: 38px;
+    padding-left: 5px;
+    box-shadow: none !important;
+    border-width: 0 0 1px 0;
+    border-radius: 0;
+  }
+
+  .modal-login .form-control:focus {
+    border-color: #ccc;
+  }
+
+  .modal-login .input-group-addon {
+    max-width: 42px;
+    text-align: center;
+    background: none;
+    border-width: 0 0 1px 0;
+    padding-left: 5px;
+    border-radius: 0;
+  }
+
+  .modal-login .btn {
+    font-size: 16px;
+    font-weight: bold;
+    background: #1b1825;
+    border-radius: 3px;
+    border: none;
+    min-width: 140px;
+    outline: none !important;
+  }
+
+  .modal-login .btn:hover,
+  .modal-login .btn:focus {
+    background: #4d4e4e;
+  }
+
+  .modal-login .hint-text {
+    text-align: center;
+    padding-top: 5px;
+    font-size: 13px;
+  }
+
+  .modal-login .modal-footer {
+    color: #999;
+    border-color: #dee4e7;
+    text-align: center;
+    margin: 0 -25px -25px;
+    font-size: 13px;
+    justify-content: center;
+  }
+
+  .modal-login a {
+    color: #fff;
+    text-decoration: underline;
+  }
+
+  .modal-login a:hover {
+    text-decoration: none;
+  }
+
+  .modal-login a {
+    color: #333333;
+    text-decoration: none;
+  }
+
+  .modal-login a:hover {
+    text-decoration: underline;
+  }
+
+  .modal-login .fa {
+    font-size: 21px;
+  }
+
+  .trigger-btn {
+    display: inline-block;
+    margin: 100px auto;
+  }
+</style>
 <body class="relative">
 
   <!-- Preloader -->
@@ -59,7 +191,10 @@
           <div class="collapse navbar-collapse" id="navbar-collapse">
 
             <ul class="nav navbar-nav">
-
+              <% if(login == 'login'){ %>
+              <li>
+                  <a style="color:#7F9BCF">Hello <%- username %>!</a>
+              </li>
               <li>
                 <a href="/">Home</a>
               </li>
@@ -72,7 +207,20 @@
               <li class="nav-item-toggle active">
                 <a href="/blog2">Blog2</a>
               </li>
-
+              <li>
+                  <a href="/logout">Logout</a></li>
+              </li>
+              <% } else{ %>
+              <li class="nav-item-toggle active">
+                <a href="/">Home</a>
+              </li>
+              <li>
+                  <a href="#ModalLogin" data-toggle="modal">Login</a>
+              </li>
+              <li>
+                  <a href="#ModalRegistration" data-toggle="modal">Sign Up</a>
+              </li>
+              <% } %>
             </ul>
           </div>
         </div> <!-- end nav-wrap -->
@@ -101,160 +249,28 @@
   <main class="main-wrapper oh pl-80">
 
     <!-- Page Title -->
-    <section class="page-title text-center" style="background-image: url(img/page_title/post_single_title_bg.jpg);">
+    <section class="page-title text-center" style="background-image: url(img/page_title/about_us_title_bg.jpg);">
       <div class="container relative clearfix">
         <div class="title-holder">
           <div class="title-text">
-            <div class="entry-meta">
-              <a href="#" class="entry-category">Lifestyle</a>
-            </div>
-            <h1>4 Easy Ways To Save Money On Your Next Business Trip</h1>
+            <h1>Blog2</h1>
+            <h2 class="subheading">Blog2 Cupli.</h2>
           </div>
         </div>
       </div>
     </section> <!-- end page title -->
 
-    <!-- Blog -->
-    <section class="section-wrap post-single pb-0">
-      <div class="container-fluid nopadding">
+    <section class="section-wrap-lg intro" id="intro">
+      <div class="container">
+        <div class="row">
 
-        <!-- content -->
-        <article class="post-content article mb-50">
-          <div class="entry">
-            <p class="lead">
-              We possess within us two minds. So far I have written only of the conscious mind. The Best theme on ThemeForest. We possess within us two minds. So far I have written only of the conscious mind. This Theme is the Best theme on ThemeForest. So far I have written only of the conscious mind.
-            </p>
-            <p>We possess within us two minds. So far I have written only of the conscious mind. <a href="#" class="underline">It's the fastest-funded project</a> and also the most funded - by far. We possess within us two minds. So far I have written only of the conscious mind. I would now like to introduce you to your second mind. And finally the subconscious is the mechanism through which thought impulses which are repeated regularly with feeling and emotion are quickened, charged and changed into their physical equivalent.</p>
+          <div class="col-md-8 col-md-offset-2 col-sm-12 text-center">
 
-            <blockquote class="mt-30 mb-30">
-              <p>
-                “Be who you are and say what you feel, because those who mind don't matter, and those who matter don't mind.”
-              </p>
-              <span>— Steve Maraboli</span>
-            </blockquote>
+          </div> <!-- end col -->
 
-            <!-- Row Images -->
-            <div class="row">
-              <div class="col-md-6">
-                <figure class="figure">
-                  <img src="img/blog/post_img_1.jpg" alt="" class="img-fw">
-                  <figcaption>Sitting alone</figcaption>
-                </figure>
-              </div>
-              <div class="col-md-6">
-                <figure class="figure">
-                  <img src="img/blog/post_img_2.jpg" alt="" class="img-fw">
-                  <figcaption>Beautiful surfing</figcaption>
-                </figure>
-              </div>
-            </div> <!-- end Row Images -->
-
-            <h2>So that’s what I discovered</h2>
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut.</p>
-
-            <img src="img/blog/post_img_full.jpg" class="post-fullwidth-img" alt="">
-
-            <h4>Conclusion</h4>
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut.</p>
-
-            <!-- Share -->
-            <div class="socials-share mb-100 clearfix">
-              <h5 class="mb-20">Share:</h5>
-              <div class="social-icons social-buttons">
-                <a href="#" class="social-facebook">
-                  <i class="ui-facebook"></i>
-                  Facebook
-                </a>
-                <a href="#" class="social-twitter">
-                  <i class="ui-twitter"></i>
-                  Twitter
-                </a>
-              </div>
-            </div> <!-- end Share -->
-
-          </div> <!-- end entry -->
-        </article>
-
-
-        <!-- Comments / Leave a comment -->
-        <section class="section-wrap bg-light">
-          <div class="container nopadding">
-            <div class="row nomargin">
-              <div class="col-md-8 col-md-offset-2">
-                <div class="entry-comments">
-                  <h3 class="heading relative text-center mb-30">3 Comments</h3>
-
-                  <ul class="comment-list">
-                    <li>
-                      <div class="comment-body">
-                        <img src="img/blog/comment_1.jpg" class="comment-avatar" alt="">
-                        <div class="comment-content">
-                          <span class="comment-author">Joeby Ragpa</span>
-                          <span><a href="#">May 6, 2017 at 12:48 pm</a></span>
-                          <p>This template is so awesome. I didn’t expect so many features inside. E-commerce pages are very useful, you can launch your online store in few seconds. I will rate 5 stars.</p>
-                          <a href="#" class="reply">Reply</a>
-                        </div>
-                      </div>
-
-                      <ul class="comment-reply">
-                        <li>
-                          <div class="comment-body">
-                            <img src="img/blog/comment_2.jpg" class="comment-avatar" alt="">
-                            <div class="comment-content">
-                              <span class="comment-author">Alexander Samokhin</span>
-                              <span><a href="#">May 6, 2017 at 12:48 pm</a></span>
-                              <p>This template is so awesome. I didn’t expect so many features inside. E-commerce pages are very useful, you can launch your online store in few seconds. I will rate 5 stars.</p>
-                              <a href="#" class="reply">Reply</a>
-                            </div>
-                          </div>
-                        </li> <!-- end reply comment -->
-                      </ul>
-
-                    </li> <!-- end 1-2 comment -->
-
-                    <li>
-                      <div class="comment-body">
-                        <img src="img/blog/comment_3.jpg" class="comment-avatar" alt="">
-                        <div class="comment-content">
-                          <span class="comment-author">Christopher Robins</span>
-                          <span><a href="#">May 6, 2017 at 12:48 pm</a></span>
-                          <p>This template is so awesome. I didn’t expect so many features inside. E-commerce pages are very useful, you can launch your online store in few seconds. I will rate 5 stars.</p>
-                          <a href="#" class="reply">Reply</a>
-                        </div>
-                      </div>
-                    </li> <!-- end 3 comment -->
-
-                  </ul>
-                </div> <!--  end comments -->
-
-                <!-- Leave a Comment -->
-                <div class="comment-form mt-60">
-                  <h3 class="heading relative text-center mb-30">Leave a Comment</h3>
-                  <form id="form" method="post" action="#">
-
-                    <label for="comment">Comment</label>
-                    <textarea name="comment" id="comment" rows="8"></textarea>
-
-                    <label for="name">Name<span class="required"> *</span></label>
-                    <input name="name" id="name" type="text">
-
-                    <label for="mail">Email<span class="required"> *</span></label>
-                    <input name="mail" id="mail" type="email">
-
-                    <label for="website">Website</label>
-                    <input name="website" id="website" type="text">
-
-                    <input type="submit" class="btn btn-lg btn-dark" value="Post Comment" id="submit-message">
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
+        </div>
       </div>
-    </section> <!-- end Blog -->
-
+    </section> <!-- end intro -->
 
     <!-- Footer -->
     <footer class="footer">
@@ -271,7 +287,132 @@
       </div>
     </footer> <!-- end footer -->
 
+
+
   </main> <!-- end main wrapper -->
+  <!-- Modal -->
+  <div id="ModalLogin" class="modal fade">
+      <div class="modal-dialog modal-login">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h4 class="modal-title">Login</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              </div>
+              <div class="modal-body">
+                  <form name="login" action="/login" method="post">
+                      <!--form action="/login" method="post"-->
+                      <div class="form-group">
+                          <div class="input-group">
+                              <span class="input-group-addon"><i class="fas fa-pen"></i></span>
+                              <input type="text" class="form-control" id="input_ID" name="userID" placeholder="ID"
+                                  required="required">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <div class="input-group">
+                              <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                              <input type="password" class="form-control" id="input_PW" name="userPW" placeholder="Password"
+                                  required="required">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <button type="submit" id="login_btn" class="btn btn-primary btn-block btn-lg">Login</button>
+                      </div>
+                      <!-- <script>
+                          $("#login_btn").click(function () {
+                              var id = $("input[name=userID]").val();
+                              var pw = $("input[name=userPW]").val();
+                              if (id != "" || pw != "")
+                                  $.post('/login', { userID: id, userPW: pw }, function (data) {
+                                      if (data.msg != null) {
+                                          alert(data.msg);
+                                      } else {
+                                          window.location.href = "/";
+                                      }
+                                  })
+
+                          });
+                          $("#input_ID").keydown(function (e) {
+                              if (e.keyCode == 13) {
+                                  var id = $("input[name=userID]").val();
+                                  var pw = $("input[name=userPW]").val();
+                                  if (id != "" || pw != "")
+                                      $.post('/login', { userID: id, userPW: pw }, function (data) {
+                                          if (data.msg != null) {
+                                              alert(data.msg);
+                                          } else {
+                                              window.location.href = "/";
+                                          }
+                                      })
+                              }
+                          })
+                          $("#input_PW").keydown(function (e) {
+                              if (e.keyCode == 13) {
+                                  var id = $("input[name=userID]").val();
+                                  var pw = $("input[name=userPW]").val();
+                                  if (id != "" || pw != "")
+                                      $.post('/login', { userID: id, userPW: pw }, function (data) {
+                                          if (data.msg != null) {
+                                              alert(data.msg);
+                                          } else {
+                                              window.location.href = "/";
+                                          }
+                                      })
+                              }
+                          })
+                      </script> -->
+
+                  </form>
+              </div>
+              <div class="modal-footer"></div>
+          </div>
+      </div>
+  </div>
+  <div id="ModalRegistration" class="modal fade">
+      <div class="modal-dialog modal-login">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h4 class="modal-title">Sign Up</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              </div>
+              <div class="modal-body">
+                  <form action="/join" method="post">
+                      <div class="form-group">
+                          <div class="input-group">
+                              <span class="input-group-addon"><i class="fas fa-pen"></i></span>
+                              <input type="text" class="form-control" name="new_userID" placeholder="ID" required="required">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <div class="input-group">
+                              <span class="input-group-addon"><i class="fas fa-key"></i></span>
+                              <input type="password" class="form-control" name="new_userPW" placeholder="Password"
+                                  required="required">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <div class="input-group">
+                              <span class="input-group-addon"><i class="fas fa-unlock"></i></span>
+                              <input type="password" class="form-control" name="new_userPW_confirm" placeholder="Password-Confirm"
+                                  required="required">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <div class="input-group">
+                              <span class="input-group-addon"><i class="fas fa-pen-nib"></i></span>
+                              <input type="text" class="form-control" name="new_userName" placeholder="User Name"
+                                  required="required">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <button type="submit" class="btn btn-primary btn-block btn-lg">Sign Up</button>
+                      </div>
+                  </form>
+              </div>
+              <div class="modal-footer"></div>
+          </div>
+      </div>
+  </div>
 
   <!-- jQuery Scripts -->
   <script type="text/javascript" src="/js/jquery.min.js"></script>

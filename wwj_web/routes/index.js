@@ -6,17 +6,18 @@ module.exports = function (app) {
   var url = require('url');
   let {PythonShell} = require('python-shell');
 
-  var options = {
+  var twitter_options = {
     mode : 'text',
     //pythonPath : '/usr/bin/python3',
     pythonPath : '',
     pythonOptions : ['-u'],
-    //scriptPath : '/home/wwj/2019-1-CECD4-WWJ-5/wwj_web',
-    scriptPath : '',
+    scriptPath : '/home/wwj/2019-1-CECD4-WWJ-5/wwj_web',
+    //scriptPath : '',
     args : ['value1', 'value2', 'value3', 'value4', 'value5', 'value6', 'value7', 'value8', 'value9', 'value10', 'value11', 'value12', 'value13', 'value14', 'value15', 'value16', 'value17', 'value18', 'value19', 'value20']
   };
 
-  PythonShell.run('tweetcrawler.py', options, function(err, results){
+  //트위터 크롤러
+  PythonShell.run('tweetcrawler.py', twitter_options, function(err, results){
     if(err) throw err;
     console.log(results);
   });

@@ -8,7 +8,7 @@ module.exports = function (app) {
 
   var options = {
     mode : 'text',
-    pythonPath : '',
+    pythonPath : '/usr/bin/python3',
     pythonOptions : ['-u'],
     scriptPath : '/home/wwj/2019-1-CECD4-WWJ-5/wwj_web',
     //scriptPath : '',

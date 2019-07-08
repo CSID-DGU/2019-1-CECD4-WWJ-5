@@ -55,15 +55,16 @@ def output(data, filepath, forNumber):
     if filepath:
         with open(filepath, "w", encoding="utf8") as f:
             f.write(out)
-        with open(filepath, 'r', encoding="utf8") as f:
-            readLine = f.readline()
-            for i in range(1, forNumber+1):
-                start = readLine.find('caption\": \"')
-                start = start + 11
-                end = readLine.find('\"}')
-                print(readLine[start:end])
-                readLine = readLine[end+2:]
-                #print(readLine)
+            print(out)
+        # with open(filepath, 'r', encoding="utf8") as f:
+        #     readLine = f.readline()
+        #     for i in range(1, forNumber+1):
+        #         start = readLine.find('caption\": \"')
+        #         start = start + 11
+        #         end = readLine.find('\"}')
+        #         print(readLine[start:end])
+        #         readLine = readLine[end+2:]
+        #         #print(readLine)
     else:
         print(out)
 

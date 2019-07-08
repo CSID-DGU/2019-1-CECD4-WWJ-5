@@ -85,9 +85,8 @@ if __name__ == "__main__":
 
     override_settings(args)
 
-    arg_required("username")
     output(get_posts_by_user("_prjt.jj", 20, True, True), "./output.txt", 20)
-    
+
     if args.mode in ["posts", "posts_full"]:
         arg_required("username")
         output(get_posts_by_user("_prjt.jj", 20, True, True), "./output.txt", 20)

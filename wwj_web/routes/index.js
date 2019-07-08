@@ -29,7 +29,7 @@ module.exports = function (app) {
   // });
 
   //인스타그램 크롤러
-  PythonShell.run('crawler.py', instagram_options, function(err, results){
+  PythonShell.run('crawler.py posts_full -u cal_foodie -n 20 -o ./output.txt', instagram_options, function(err, results){
     if(err) throw err;
     console.log(results);
   });

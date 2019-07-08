@@ -8,14 +8,15 @@ module.exports = function (app) {
 
   var options = {
     mode : 'text',
-    pythonPath : '/usr/bin/python3',
+    //pythonPath : '/usr/bin/python3',
+    pythonPath : '',
     pythonOptions : ['-u'],
-    scriptPath : '/home/wwj/2019-1-CECD4-WWJ-5/wwj_web',
-    //scriptPath : '',
+    //scriptPath : '/home/wwj/2019-1-CECD4-WWJ-5/wwj_web',
+    scriptPath : '',
     args : ['value1', 'value2', 'value3']
   };
 
-  PythonShell.run('', options, function(err, results){
+  PythonShell.run('tweetcrawler.py', options, function(err, results){
     if(err) throw err;
     console.log('results: %j', results);
   });

@@ -13,12 +13,12 @@ module.exports = function (app) {
     pythonOptions : ['-u'],
     //scriptPath : '/home/wwj/2019-1-CECD4-WWJ-5/wwj_web',
     scriptPath : '',
-    args : ['value1', 'value2', 'value3']
+    args : ['value1', 'value2', 'value3', 'value4', 'value5', 'value6', 'value7', 'value8', 'value9', 'value10', 'value11', 'value12', 'value13', 'value14', 'value15', 'value16', 'value17', 'value18', 'value19', 'value20']
   };
 
   PythonShell.run('tweetcrawler.py', options, function(err, results){
     if(err) throw err;
-    console.log('results: %j', results);
+    console.log(results);
   });
 
   var connection = mysql.createConnection({

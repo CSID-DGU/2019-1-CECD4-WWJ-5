@@ -10,7 +10,7 @@ module.exports = function (app) {
     mode : 'text',
     pythonPath : '',
     pythonOptions : ['-u'],
-    scriptPath : '../crawler/tweeter',
+    scriptPath : '/home/wwj/2019-1-CECD4-WWJ-5/wwj_web',
     //scriptPath : '',
     args : ['value1', 'value2', 'value3']
   };

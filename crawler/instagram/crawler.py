@@ -70,7 +70,7 @@ def output(data, filepath, forNumber):
 
 
 if __name__ == "__main__":
-    print(get_posts_by_user("_prjt.jj", 20, True, True))
+    print(get_posts_by_user("_prjt.jj", 20, True, False))
     #output(get_posts_by_user("_prjt.jj", 20, True, True), "./output.txt", 20)
     #output("hello world!", "./output.txt", 20)
 

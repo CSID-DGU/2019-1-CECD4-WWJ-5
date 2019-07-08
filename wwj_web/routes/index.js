@@ -8,16 +8,28 @@ module.exports = function (app) {
 
   var twitter_options = {
     mode : 'text',
-    //pythonPath : '/usr/bin/python3',
     pythonPath : '',
     pythonOptions : ['-u'],
     scriptPath : '/home/wwj/2019-1-CECD4-WWJ-5/crawler/tweeter',
-    //scriptPath : '',
+    args : ['value1', 'value2', 'value3', 'value4', 'value5', 'value6', 'value7', 'value8', 'value9', 'value10', 'value11', 'value12', 'value13', 'value14', 'value15', 'value16', 'value17', 'value18', 'value19', 'value20']
+  };
+
+  var instagram_options = {
+    mode : 'text',
+    pythonPath : '',
+    pythonOptions : ['-u'],
+    scriptPath : '/home/wwj/2019-1-CECD4-WWJ-5/crawler/instagram',
     args : ['value1', 'value2', 'value3', 'value4', 'value5', 'value6', 'value7', 'value8', 'value9', 'value10', 'value11', 'value12', 'value13', 'value14', 'value15', 'value16', 'value17', 'value18', 'value19', 'value20']
   };
 
   //트위터 크롤러
   PythonShell.run('tweetcrawler.py', twitter_options, function(err, results){
+    if(err) throw err;
+    console.log(results);
+  });
+
+  //인스타그램 크롤러
+  PythonShell.run('crawler.py', instagram_options, function(err, results){
     if(err) throw err;
     console.log(results);
   });

@@ -70,7 +70,7 @@ def output(data, filepath, forNumber):
 
 if __name__ == "__main__":
     arg_required("username")
-    output(get_posts_by_user("cupli_normal", 20, "posts_full", True), "./output.txt", 20)
+    output(get_posts_by_user("cupli_normal", 20, True, True), "./output.txt", 20)
     # parser = argparse.ArgumentParser(description="Instagram Crawler", usage=usage())
     # parser.add_argument(
     #     "mode", help="options: [posts, posts_full, profile, profile_script, hashtag]"

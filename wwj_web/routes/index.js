@@ -85,17 +85,29 @@ module.exports = function (app) {
 
   router.get('/about', function(req, res){
     res.status(200);
-    res.render('about');
+    res.render('about', {
+      url: req.url,
+      login: req.session.login,
+      username: req.session.username
+    });
   })
 
   router.get('/blog1', function(req, res){
     res.status(200);
-    res.render('blog-standard');
+    res.render('blog-standard', {
+      url: req.url,
+      login: req.session.login,
+      username: req.session.username
+    });
   })
 
   router.get('/blog2', function(req, res){
     res.status(200);
-    res.render('blog-single');
+    res.render('blog-single', {
+      url: req.url,
+      login: req.session.login,
+      username: req.session.username
+    });
   })
 
   return router;

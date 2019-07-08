@@ -1,7 +1,6 @@
 ﻿# 예제 코드1: 검색 키워드를 활용한 트위터 게시글 단순 검색
 
 import tweepy
-import sys
 
 # 트위터 Consumer Key (API Key)
 consumer_key = ""

@@ -4,6 +4,21 @@ module.exports = function (app) {
   var mysql = require('mysql');
   var JSAlert = require("js-alert");
   var url = require('url');
+  var PythonShell = require('python-shell');
+
+  var options = {
+    mode : 'text',
+    pythonPath : '',
+    pythonOptions : ['-u'],
+    //scriptPath : '../crawler/tweeter',
+    scriptPath : '',
+    args : ['value1', 'value2', 'value3']
+  };
+
+  PythonShell.run('', options, function(err, results){
+    if(err) throw err;
+    console.log('results: %j', results);
+  });
 
   var connection = mysql.createConnection({
 		host: "localhost", //서버 로컬 IP

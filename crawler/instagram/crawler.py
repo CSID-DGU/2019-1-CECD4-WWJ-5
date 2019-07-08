@@ -69,7 +69,9 @@ def output(data, filepath, forNumber):
 
 
 if __name__ == "__main__":
-    print("hello test")
+    # output(get_posts_by_user("_prjt.jj", 20, True, True), "./output.txt", 20)
+    output("hello world!", "./output.txt", 20)
+
     # parser = argparse.ArgumentParser(description="Instagram Crawler", usage=usage())
     # parser.add_argument(
     #     "mode", help="options: [posts, posts_full, profile, profile_script, hashtag]"
@@ -86,7 +88,7 @@ if __name__ == "__main__":
     #
     # override_settings(args)
     #
-    # #output(get_posts_by_user("_prjt.jj", 20, True, True), "./output.txt", 20)
+    #
     #
     # if args.mode in ["posts", "posts_full"]:
     #     arg_required("username")

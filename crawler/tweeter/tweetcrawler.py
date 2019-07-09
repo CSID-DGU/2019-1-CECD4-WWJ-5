@@ -26,7 +26,9 @@ keyword = "from:@gradProject_WWJ";     # 검색할 키워드
 tweets = api.search(keyword, count = 20) # 한 번에 15 트윗 검색 정보를 가져옴
 
 # tweets = api.search(keyword, count=100) # 일반 계정으로는 최대 100개 최신 게시물을 가져올 수 있음
-for num, tweet in enumerate(tweets):
-    print(num, "]", tweet.text)
-    #print (tweet.favorite_count)
-    #print (tweet.retweet_count)
+with open("./output.txt", "w", encoding="utf8") as f:
+    for num, tweet in enumerate(tweets):
+        f.write(num, "]", tweet.text)
+        print(num, "]", tweet.text)
+        #print (tweet.favorite_count)
+        #print (tweet.retweet_count)

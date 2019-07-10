@@ -19,7 +19,6 @@ class Browser:
         # chrome_options.headless = True
         chrome_options.add_argument("--start-maximized")
         chrome_options.add_argument("--no-sandbox")
-        chrome_options.add_argument("--disable-dev-shm-usage")
         self.driver = webdriver.Chrome(
             # executable_path="%s/bin/chromedriver" % dir_path,
             service_args=service_args,

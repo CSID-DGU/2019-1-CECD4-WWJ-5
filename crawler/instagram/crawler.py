@@ -70,7 +70,9 @@ def output(data, filepath, forNumber):
 
 
 if __name__ == "__main__":
+    print("start")
     output(get_posts_by_user("_prjt.jj", 20, True, True), "./output_instagram.txt", 20)
+    print("end")
     #output("hello world!", "./output.txt", 20)
 
     # parser = argparse.ArgumentParser(description="Instagram Crawler", usage=usage())

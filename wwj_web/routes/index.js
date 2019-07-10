@@ -19,7 +19,7 @@ module.exports = function (app) {
     pythonPath : '',
     pythonOptions : ['-u'],
     scriptPath : '/home/wwj/2019-1-CECD4-WWJ-5/crawler/instagram',
-    args : ['value1']
+    args : ['value1', 'value2', 'value3', 'value4', 'value5']
   };
 
   //트위터 크롤러

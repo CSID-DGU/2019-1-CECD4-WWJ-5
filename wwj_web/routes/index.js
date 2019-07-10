@@ -31,7 +31,9 @@ module.exports = function (app) {
   //인스타그램 크롤러
   PythonShell.run('crawler.py', instagram_options, function(err, results){
     if(err) throw err;
+    console.log("instagram crawler start...")
     console.log(results);
+    console.log("instagram crawler end...")
   });
 
   var connection = mysql.createConnection({

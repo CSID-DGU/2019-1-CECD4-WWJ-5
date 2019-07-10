@@ -9,7 +9,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 from .utils import randmized_sleep
 
-
 class Browser:
     def __init__(self, has_screen):
         dir_path = os.path.dirname(os.path.realpath(__file__))

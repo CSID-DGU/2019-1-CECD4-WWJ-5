@@ -22,19 +22,19 @@ module.exports = function (app) {
     args : ['value1', 'value2', 'value3', 'value4', 'value5']
   };
 
-  // //트위터 크롤러
+  //트위터 크롤러
   // PythonShell.run('tweetcrawler.py', twitter_options, function(err, results){
   //   if(err) throw err;
   //   console.log(results);
   // });
 
   //인스타그램 크롤러
-  PythonShell.run('crawler.py', instagram_options, function(err, results){
-    if(err) throw err;
-    console.log("instagram crawler start...")
-    console.log(results);
-    console.log("instagram crawler end...")
-  });
+  // PythonShell.run('crawler.py', instagram_options, function(err, results){
+  //   if(err) throw err;
+  //   console.log("instagram crawler start...")
+  //   console.log(results);
+  //   console.log("instagram crawler end...")
+  // });
 
   var connection = mysql.createConnection({
 		host: "localhost", //서버 로컬 IP

@@ -6,17 +6,21 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
+from pyvirtualdisplay import Display
 
 from .utils import randmized_sleep
 
 class Browser:
     def __init__(self, has_screen):
+        display = Display(visible=0, size=(800, 800))
+        display.start()
+        driver = webdriver.Chrome()
+        
         dir_path = os.path.dirname(os.path.realpath(__file__))
         service_args = ["--ignore-ssl-errors=true"]
         chrome_options = Options()
         if not has_screen:
             chrome_options.add_argument("--headless")
-        # chrome_options.headless = True
         chrome_options.add_argument("--start-maximized")
         chrome_options.add_argument("--no-sandbox")
         self.driver = webdriver.Chrome(

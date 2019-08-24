@@ -6,6 +6,8 @@ module.exports = function (app) {
   var url = require('url');
   let {PythonShell} = require('python-shell');
 
+  let test_val = 15;
+
   var twitter_options = {
     mode : 'text',
     pythonPath : '',
@@ -27,7 +29,7 @@ module.exports = function (app) {
     pythonPath : '',
     pythonOptions : ['-u'],
     scriptPath : '/home/wwj/2019-1-CECD4-WWJ-5/crawler/tweeter',
-    args : ['hello1', 'hello2', 'hello3']
+    args : [test_val]
   }
 
   PythonShell.run('test.py', test_options, function(err, results){

@@ -22,6 +22,19 @@ module.exports = function (app) {
     args : ['value1', 'value2', 'value3', 'value4', 'value5']
   };
 
+  var test_options = {
+    mode : 'text',
+    pythonPath : '',
+    pythonOptions : ['-u'],
+    scriptPath : '/home/wwj/2019-1-CECD4-WWJ-5/crawler/tweeter',
+    args : ['hello1', 'hello2', 'hello3']
+  }
+
+  PythonShell.run('test.py', test_options, function(err, results){
+    if(err) throw err;
+    console.log(results);
+  });
+
   //트위터 크롤러
   // PythonShell.run('tweetcrawler.py', twitter_options, function(err, results){
   //   if(err) throw err;
@@ -29,12 +42,12 @@ module.exports = function (app) {
   // });
 
   //인스타그램 크롤러
-  PythonShell.run('crawler.py', instagram_options, function(err, results){
-    if(err) throw err;
-    console.log("instagram crawler start...")
-    console.log(results);
-    console.log("instagram crawler end...")
-  });
+  // PythonShell.run('crawler.py', instagram_options, function(err, results){
+  //   if(err) throw err;
+  //   console.log("instagram crawler start...")
+  //   console.log(results);
+  //   console.log("instagram crawler end...")
+  // });
 
   var connection = mysql.createConnection({
 		host: "localhost", //서버 로컬 IP

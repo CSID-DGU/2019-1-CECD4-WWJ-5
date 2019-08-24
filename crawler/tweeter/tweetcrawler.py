@@ -3,17 +3,17 @@
 import tweepy
 
 # 트위터 Consumer Key (API Key)
-consumer_key = ""
+consumer_key = "rJAUpOJMYKfptVgnE8XbyY5P6"
 # 트위터 Consumer Secret (API Secret)
-consumer_secret = ""
+consumer_secret = "p5ePmi3VLk3MxGapVI0AfBDMiZeUOvvwPc6E0UZlFK0In5cFj6"
 
 # 1차 인증: 개인 앱 정보
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 
 # 트위터 Access Token
-access_token = ""
+access_token = "1132628802750668801-nv0JVqlgZXS0FX7Fk0tBqB5TvwmY2L"
 # 트위터 Access Token Secret
-access_token_secret=""
+access_token_secret="iZDotfJi6zfTHOgyWr4MdAMqUqrKNYcXjvgJtpuu3wF0h"
 
 # 2차 인증: 토큰 정보
 auth.set_access_token(access_token, access_token_secret)
@@ -21,7 +21,7 @@ auth.set_access_token(access_token, access_token_secret)
 # 3. twitter API 생성
 api = tweepy.API(auth)
 
-keyword = "from:@gradProject_WWJ";     # 검색할 키워드
+keyword = sys.argv[1];     # 검색할 키워드
 
 tweets = api.search(keyword, count = 20) # 한 번에 15 트윗 검색 정보를 가져옴
 

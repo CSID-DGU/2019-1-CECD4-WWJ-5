@@ -32,7 +32,7 @@ module.exports = function (app) {
     args : ['from:@gradProject_WWJ']
   }
 
-  트위터 크롤러
+  //트위터 크롤러
   PythonShell.run('tweetcrawler.py', test_options, function(err, results){
     if(err) throw err;
     console.log(results);

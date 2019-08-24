@@ -3,17 +3,17 @@ import sys
 import tweepy
 
 # 트위터 Consumer Key (API Key)
-consumer_key = "rJAUpOJMYKfptVgnE8XbyY5P6"
+consumer_key = ""
 # 트위터 Consumer Secret (API Secret)
-consumer_secret = "p5ePmi3VLk3MxGapVI0AfBDMiZeUOvvwPc6E0UZlFK0In5cFj6"
+consumer_secret = ""
 
 # 1차 인증: 개인 앱 정보
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 
 # 트위터 Access Token
-access_token = "1132628802750668801-nv0JVqlgZXS0FX7Fk0tBqB5TvwmY2L"
+access_token = ""
 # 트위터 Access Token Secret
-access_token_secret="iZDotfJi6zfTHOgyWr4MdAMqUqrKNYcXjvgJtpuu3wF0h"
+access_token_secret=""
 
 # 2차 인증: 토큰 정보
 auth.set_access_token(access_token, access_token_secret)

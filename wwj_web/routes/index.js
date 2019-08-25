@@ -149,6 +149,7 @@ module.exports = function (app) {
       } else{
         craw_twt_userid = rows;
         console.log(craw_twt_userid);
+        console.log(rows[0]);
       }
     });
   })

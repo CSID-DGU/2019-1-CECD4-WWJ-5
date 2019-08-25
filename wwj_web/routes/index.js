@@ -33,10 +33,10 @@ module.exports = function (app) {
   }
 
   //트위터 크롤러
-  PythonShell.run('tweetcrawler.py', test_options, function(err, results){
-    if(err) throw err;
-    console.log(results);
-  });
+  // PythonShell.run('tweetcrawler.py', test_options, function(err, results){
+  //   if(err) throw err;
+  //   console.log(results);
+  // });
 
   //인스타그램 크롤러
   // PythonShell.run('crawler.py', instagram_options, function(err, results){

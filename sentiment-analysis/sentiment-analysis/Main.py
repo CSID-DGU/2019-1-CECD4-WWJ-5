@@ -1,5 +1,6 @@
 from __future__ import division
 
+import time
 import re
 import matplotlib.pyplot as pyplot
 import pandas as pd
@@ -45,19 +46,18 @@ def categorize_word_chunks(chunks, lexicons):
 
     return scores_to_percentiles(scores)
 
-
-# Get data and Read files
-try:
-    raw_data = open('/home/wwj/2019-1-CECD4-WWJ-5/wwj_web/output_twitter.txt',encoding='utf-8')
-except:
-    sys.stderr.write("No File")
-    exit(1)
-# raw_data = open('resources/example.txt', encoding='utf-8')
-
 sentiment_data_frame = pd.read_csv('lexicon/polarity.csv')
-# Split sentences to chunks
-word_chunks = analyze_sentences_into_chunks(raw_data)
-# Analyze sentiments from chunks and polarity data frame
-categorized_scores = categorize_word_chunks(word_chunks, sentiment_data_frame)
 
-print(categorized_scores.values())
+while True:
+    # Get data and Read files
+    raw_data = open('/home/2019-1-CECD4-WWJ-5/wwj_web/output_twitter.txt',encoding='utf-8')
+    # raw_data = open('resources/example.txt', encoding='utf-8')
+
+    # Split sentences to chunks
+    word_chunks = analyze_sentences_into_chunks(raw_data)
+    # Analyze sentiments from chunks and polarity data frame
+    categorized_scores = categorize_word_chunks(word_chunks, sentiment_data_frame)
+
+    print(categorized_scores.values())
+
+    time.sleep(30)

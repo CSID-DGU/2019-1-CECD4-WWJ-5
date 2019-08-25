@@ -6,7 +6,7 @@ module.exports = function (app) {
   var url = require('url');
   let {PythonShell} = require('python-shell');
 
-  var craw_twt_userid = '';
+  var craw_twt_userid = "from:@gradProject_WWJ";
 
   var twitter_options = {
     mode : 'text',
@@ -144,7 +144,7 @@ module.exports = function (app) {
         console.log(err);
       } else{
         //craw_twt_userid = rows[0].twtid;
-        craw_twt_userid = 'from:@gradProject_WWJ';
+        ////craw_twt_userid = 'from:@gradProject_WWJ';
 
         //console.log(rows[0].twtid);
         //from:@gradProject_WWJ

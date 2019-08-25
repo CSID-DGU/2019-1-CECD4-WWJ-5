@@ -129,9 +129,9 @@ module.exports = function (app) {
     var twitter_id = req.body.twitterID;
     var twitter_pw = req.body.twitterPW;
     res.status(200);
-    var queryString = 'UPDATE user SET twtid = ?, twtpw = ? WHERE userid=?';
-    var params = [twitter_id, twitter_pw, req.session.userID];
-    connection.query(queryString, params, function(err, rows) {
+    var queryString = 'UPDATE user SET twtid=?, twtpw=? WHERE userid=?';
+    var params = [req.body.twitterID, req.body.twitterPW, req.session.userID];
+    connection.query(queryString, params, function(err) {
       if(err){
         console.log(err);
       }

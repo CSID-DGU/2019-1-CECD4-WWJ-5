@@ -47,7 +47,11 @@ def categorize_word_chunks(chunks, lexicons):
 
 
 # Get data and Read files
-raw_data = open('/home/wwj/2019-1-CECD4-WWJ-5/wwj_web/output_twitter.txt',encoding='utf-8')
+try:
+    raw_data = open('/home/wwj/2019-1-CECD4-WWJ-5/wwj_web/output_twitter.txt',encoding='utf-8')
+except:
+    sys.stderr.write("No File")
+    exit(1)
 # raw_data = open('resources/example.txt', encoding='utf-8')
 
 sentiment_data_frame = pd.read_csv('lexicon/polarity.csv')
@@ -56,7 +60,4 @@ word_chunks = analyze_sentences_into_chunks(raw_data)
 # Analyze sentiments from chunks and polarity data frame
 categorized_scores = categorize_word_chunks(word_chunks, sentiment_data_frame)
 
-# Draw pie chart
-pyplot.pie(categorized_scores.values(), explode=(0.02, 0.02, 0.02, 0.02, 0.02), labels=['Positive', 'Negative', 'Neutral', 'Composite', 'None'], autopct='%.2f', startangle=90)
-pyplot.axis('equal')
-pyplot.show()
+print(categorized_scores.values())

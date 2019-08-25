@@ -29,14 +29,14 @@ module.exports = function (app) {
     pythonPath : '',
     pythonOptions : ['-u'],
     scriptPath : '/home/wwj/2019-1-CECD4-WWJ-5/crawler/tweeter',
-    args : ['from:@gradProject_WWJ']
+    args : [craw_twt_userid]
   }
 
   //트위터 크롤러
-  // PythonShell.run('tweetcrawler.py', test_options, function(err, results){
-  //   if(err) throw err;
-  //   console.log(results);
-  // });
+  PythonShell.run('tweetcrawler.py', test_options, function(err, results){
+    if(err) throw err;
+    console.log(results);
+  });
 
   //인스타그램 크롤러
   // PythonShell.run('crawler.py', instagram_options, function(err, results){
@@ -136,7 +136,7 @@ module.exports = function (app) {
         console.log(err);
       }
     });
-    res.redirect('/');
+    res.redirect('/blog2');
   })
 
 
@@ -147,10 +147,13 @@ module.exports = function (app) {
       if(err){
         console.log(err);
       } else{
-        craw_twt_userid = rows;
-        console.log(rows[0].twtid);
+        //craw_twt_userid = rows[0].twtid;
+        craw_twt_userid = "from:@"+rows[0].twtid;
+        //console.log(rows[0].twtid);
+        //from:@gradProject_WWJ
       }
     });
+    res.redirect('/blog2');
   })
 
 

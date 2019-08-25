@@ -136,16 +136,26 @@ module.exports = function (app) {
         console.log(err);
       }
     });
+    res.redirect('/');
   })
 
 
   router.get('/about', function(req, res){
     res.status(200);
-    res.render('about', {
-      url: req.url,
-      login: req.session.login,
-      username: req.session.username
+    var wueryString = 'SELECT twtid FROM user WHERE userid=?';
+    connection.query(queryString, req.session.userID, function(err, data){
+      if(err){
+        console.log(err);
+      } else{
+        res.render('about', {
+          url: req.url,
+          login: req.session.login,
+          username: req.session.username,
+          usertwtid: data
+        });
+      }
     });
+
   })
 
   router.get('/blog1', function(req, res){

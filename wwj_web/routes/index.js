@@ -32,11 +32,7 @@ module.exports = function (app) {
     args : [craw_twt_userid]
   }
 
-  //트위터 크롤러
-  // PythonShell.run('tweetcrawler.py', test_options, function(err, results){
-  //   if(err) throw err;
-  //   console.log(results);
-  // });
+
 
   //인스타그램 크롤러
   // PythonShell.run('crawler.py', instagram_options, function(err, results){
@@ -151,6 +147,12 @@ module.exports = function (app) {
         craw_twt_userid = "from:@"+rows[0].twtid;
         //console.log(rows[0].twtid);
         //from:@gradProject_WWJ
+
+        //트위터 크롤러
+        PythonShell.run('tweetcrawler.py', test_options, function(err, results){
+          if(err) throw err;
+          console.log(results);
+        });
       }
     });
     res.redirect('/blog2');

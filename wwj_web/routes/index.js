@@ -144,9 +144,9 @@ module.exports = function (app) {
     //craw_twt_userid
     var queryString = 'SELECT twtid FROM user WHERE userid=?';
     connection.query(queryString, req.session.userID, function(err, rows){
-      if(err{
+      if(err){
         console.log(err);
-      }) else{
+      } else{
         craw_twt_userid = rows;
         console.log(craw_twt_userid);
       }

@@ -124,6 +124,21 @@ module.exports = function (app) {
     res.status(200);
   })
 
+
+  router.post('/snsRegister', function(req, res) {
+    var twitter_id = req.body.twitterID;
+    var twitter_pw = req.body.twitterPW;
+    res.status(200);
+    var queryString = 'UPDATE user SET twtid = ?, twtpw = ? WHERE userid=?';
+    var params = [twitter_id, twitter_pw, req.session.userID];
+    connection.query(queryString, params, function(err, rows) {
+      if(err){
+        console.log(err);
+      }
+    });
+  })
+
+
   router.get('/about', function(req, res){
     res.status(200);
     res.render('about', {

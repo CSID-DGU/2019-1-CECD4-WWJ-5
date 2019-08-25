@@ -158,8 +158,7 @@ module.exports = function (app) {
     res.render('about', {
       url: req.url,
       login: req.session.login,
-      username: req.session.username,
-      usertwtid: data
+      username: req.session.username
     });
   })
 

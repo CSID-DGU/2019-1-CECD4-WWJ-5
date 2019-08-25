@@ -50,7 +50,7 @@ sentiment_data_frame = pd.read_csv('lexicon/polarity.csv')
 
 while True:
     # Get data and Read files
-    raw_data = open('/home/2019-1-CECD4-WWJ-5/wwj_web/output_twitter.txt',encoding='utf-8')
+    raw_data = open('/home/wwj/2019-1-CECD4-WWJ-5/wwj_web/output_twitter.txt',encoding='utf-8')
     # raw_data = open('resources/example.txt', encoding='utf-8')
 
     # Split sentences to chunks

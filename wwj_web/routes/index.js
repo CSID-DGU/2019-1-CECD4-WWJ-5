@@ -144,7 +144,7 @@ module.exports = function (app) {
         console.log(err);
       } else{
         //craw_twt_userid = rows[0].twtid;
-        craw_twt_userid = 'from:@' + rows[0].twtid;
+        craw_twt_userid = 'from:@gradProject_WWJ';
 
         //console.log(rows[0].twtid);
         //from:@gradProject_WWJ

@@ -29,7 +29,7 @@ module.exports = function (app) {
     pythonPath : '',
     pythonOptions : ['-u'],
     scriptPath : '/home/wwj/2019-1-CECD4-WWJ-5/crawler/tweeter',
-    args : [craw_twt_userid]
+    args : ['from:@gradProject_WWJ']
   }
 
 
@@ -144,7 +144,7 @@ module.exports = function (app) {
         console.log(err);
       } else{
         //craw_twt_userid = rows[0].twtid;
-        craw_twt_userid = "from:@"+rows[0].twtid;
+        ////craw_twt_userid = "from:@"+rows[0].twtid;
         //console.log(rows[0].twtid);
         //from:@gradProject_WWJ
 

@@ -6,7 +6,7 @@ module.exports = function (app) {
   var url = require('url');
   let {PythonShell} = require('python-shell');
 
-  let test_val = 15;
+  var craw_twt_userid = "";
 
   var twitter_options = {
     mode : 'text',
@@ -137,6 +137,20 @@ module.exports = function (app) {
       }
     });
     res.redirect('/');
+  })
+
+
+  router.post('/crawlingStart', function(req, res){
+    //craw_twt_userid
+    var queryString = 'SELECT twtid FROM user WHERE userid=?';
+    connection.query(queryString, req.session.userID, function(err, rows){
+      if(err{
+        console.log(err);
+      }) else{
+        craw_twt_userid = rows;
+        console.log(craw_twt_userid);
+      }
+    });
   })
 
 

@@ -6,7 +6,7 @@ module.exports = function (app) {
   var url = require('url');
   let {PythonShell} = require('python-shell');
 
-  var craw_twt_userid = "";
+  var craw_twt_userid = '';
 
   var twitter_options = {
     mode : 'text',
@@ -29,7 +29,7 @@ module.exports = function (app) {
     pythonPath : '',
     pythonOptions : ['-u'],
     scriptPath : '/home/wwj/2019-1-CECD4-WWJ-5/crawler/tweeter',
-    args : ['from:@gradProject_WWJ']
+    args : [craw_twt_userid]
   }
 
 
@@ -144,7 +144,8 @@ module.exports = function (app) {
         console.log(err);
       } else{
         //craw_twt_userid = rows[0].twtid;
-        ////craw_twt_userid = "from:@"+rows[0].twtid;
+        craw_twt_userid = 'from:@' + rows[0].twtid;
+
         //console.log(rows[0].twtid);
         //from:@gradProject_WWJ
 

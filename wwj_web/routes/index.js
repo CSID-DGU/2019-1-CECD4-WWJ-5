@@ -148,8 +148,7 @@ module.exports = function (app) {
         console.log(err);
       } else{
         craw_twt_userid = rows;
-        console.log(craw_twt_userid);
-        console.log(rows[0]);
+        console.log(rows[0].twtid);
       }
     });
   })

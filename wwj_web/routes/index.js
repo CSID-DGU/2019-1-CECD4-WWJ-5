@@ -188,10 +188,18 @@ module.exports = function (app) {
 
   router.get('/blog2', function(req, res){
     res.status(200);
-    res.render('blog-single', {
-      url: req.url,
-      login: req.session.login,
-      username: req.session.username
+    var queryString = 'SELECT twtid FROM user WHERE userid=?';
+    connection.query(queryString, req.session.userID, function(err, data){
+      if(err){
+        console.log(err);
+      } else{
+        res.render('about', {
+          url: req.url,
+          login: req.session.login,
+          username: req.session.username,
+          usertwtid: data
+        });
+      }
     });
   })
 

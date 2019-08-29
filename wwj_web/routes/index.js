@@ -193,7 +193,7 @@ module.exports = function (app) {
       if(err){
         console.log(err);
       } else{
-        res.render('about', {
+        res.render('blog-single', {
           url: req.url,
           login: req.session.login,
           username: req.session.username,

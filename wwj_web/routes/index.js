@@ -175,11 +175,11 @@ module.exports = function (app) {
         });
       }
     });
-    // res.render('about', {
-    //   url: req.url,
-    //   login: req.session.login,
-    //   username: req.session.username
-    // });
+    res.render('about', {
+      url: req.url,
+      login: req.session.login,
+      username: req.session.username
+    });
   })
 
   router.get('/blog1', function(req, res){

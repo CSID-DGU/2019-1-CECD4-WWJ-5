@@ -162,7 +162,7 @@ module.exports = function (app) {
 
   router.get('/about', function(req, res){
     res.status(200);
-    var wueryString = 'SELECT twtid FROM user WHERE userid=?';
+    var queryString = 'SELECT twtid FROM user WHERE userid=?';
     connection.query(queryString, req.session.userID, function(err, data){
       if(err){
         console.log(err);
@@ -174,11 +174,6 @@ module.exports = function (app) {
           usertwtid: data
         });
       }
-    });
-    res.render('about', {
-      url: req.url,
-      login: req.session.login,
-      username: req.session.username
     });
   })
 

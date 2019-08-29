@@ -189,7 +189,7 @@ module.exports = function (app) {
   router.get('/blog2', function(req, res){
     res.status(200);
     var queryString = 'SELECT twtid FROM user WHERE userid=?';
-    connection.query(queryString, req.session.userID, function(err, data){
+    connection.query(queryString, req.session.userID, function(err, rows){
       if(err){
         console.log(err);
       } else{
@@ -197,7 +197,7 @@ module.exports = function (app) {
           url: req.url,
           login: req.session.login,
           username: req.session.username,
-          usertwtid: data
+          usertwtid: rows[0].twtid
         });
       }
     });

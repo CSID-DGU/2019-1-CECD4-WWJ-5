@@ -266,6 +266,7 @@
 
           <div class="col-md-8 col-md-offset-2 col-sm-12 text-center">
           <h1><%- username %>님 안녕하세요!</h1>
+          <p>
           큐플리 서비스를 제공받기 위해서는 데이터 분석을 실행할 SNS 계정을 등록해야 합니다.
           <% if(usertwtid == 'NULL'){ %>
             현재 등록된 SNS 아이디가 없습니다.
@@ -274,7 +275,9 @@
             현재 등록된 트위터 아이디는 <%- usertwtid %>입니다.
             트위터 아이디를 수정하려면 아래의 register 버튼을 눌러 새로 입력해주세요.<br>
           <% } %>
+          <p>
           <a href="#ModalSNSID" data-toggle="modal">Register</a>
+          <button type="button" id="#ModalSNSID" class="btn btn-primary btn-block btn-lg">Register</button>
           <form name="crawlingStart" action="/crawlingStart" method="post">
             <button type="submit" id="start_btn" class="btn btn-primary btn-block btn-lg">Crawling Start</button>
           </form>

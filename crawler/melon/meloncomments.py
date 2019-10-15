@@ -18,7 +18,7 @@ soup = BeautifulSoup(html.text, "html.parser")
 
 tags = soup.body.find("script", {"type":"application/ld+json"})
 
-print(tags)
+#print(tags)
 
 file = open('result1.txt', 'w')
 file.write(str(tags))

@@ -1,5 +1,5 @@
-with open("final.txt", "w", encoding="utf8") as fi:
-    with open("test.txt", 'r', encoding="utf8") as f:
+with open("final.txt", "w") as fi:
+    with open("test.txt", 'r') as f:
         line_num = 1
         line_data = f.readline()
         while line_data:

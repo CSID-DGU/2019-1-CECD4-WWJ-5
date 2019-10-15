@@ -5,6 +5,7 @@ import os
 from crawler import tweetcrawler
 from user_list import DB_IDlistup
 from sentiment import Main
+from sentiment import emotion
 from multiprocessing import Process
 
 
@@ -19,6 +20,9 @@ from multiprocessing import Process
 if __name__ == '__main__':
 
     sentiment_data_frame = pd.read_csv('sentiment/lexicon/polarity.csv')
+    emotion_data_frame = pd.read_csv('sentiment/lexicon/emotion-dictionary-wwj.csv')
+    type_data_frame = pd.read_csv('sentiment/lexicon/subjectivity-type.csv')
+    intensity_data_frame = pd.read_csv('sentiment/lexicon/intensity.csv')
 
     while True:
 
@@ -32,6 +36,7 @@ if __name__ == '__main__':
 
         for x,y in user_lists:
             Main.user_sentiment_analysis(sentiment_data_frame, x)
+            emotion.user_emotion_analysis(emotion_data_frame,x)
 
 
         time.sleep(30)

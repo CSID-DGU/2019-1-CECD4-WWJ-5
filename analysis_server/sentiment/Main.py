@@ -45,7 +45,12 @@ def categorize_word_chunks(chunks, lexicons):
     for chunk in chunks:
         for index, row in lexicons.iterrows():
             if row['ngram'] in chunk:
-                scores[row['max.value']] += row['max.prop']
+                scores['POS'] += row['POS']
+                scores['NEG'] += row['NEG']
+                scores['NEUT'] += row['NEUT']
+                scores['COMP'] += row['COMP']
+                scores['None'] += row['None']
+                print('NGRAM : %s, POS : %f, NEG : %f, NEU : %f'%(row['ngram'], scores['POS'], scores['NEG'], scores['NEUT']))
 
     return scores_to_percentiles(scores)
 

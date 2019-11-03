@@ -54,13 +54,14 @@ def categorize_word_chunks(chunks, lexicons):
                 scores['dis'] += row['dis']
                 scores['ang'] += row['ang']
                 scores['none'] += row['none']
-                print('NGRAM : %s, ant : %f, joy : %f, tru : %f, fea : %f, sur : %f, sad : %f, dis : %f, ang : %f, none : %f'%(row['ngram'],scores['ant'] ,scores['joy'], scores['tru'], scores['fea'], scores['sur'], scores['sad'], scores['dis'], scores['ang'], scores['none']))
 
     return scores_to_percentiles(scores)
 
 def user_emotion_analysis(emotion_data_frame, userid):
     # Get data and Read files
+#    raw_data = open('/home/wwj/analysis_server/member_data/output_twitter_%s.txt'%(userid),encoding='utf-8')
     raw_data = open('/home/wwj/analysis_server/member_data/output_twitter.txt',encoding='utf-8')
+
     # raw_data = open('resources/example.txt', encoding='utf-8')
 
     # Split sentences to chunks
@@ -69,10 +70,6 @@ def user_emotion_analysis(emotion_data_frame, userid):
     categorized_scores = categorize_word_chunks(word_chunks, emotion_data_frame)
 
     print('Emotion Score for %s'%(userid))
-
     print ('ant : %f, joy : %f, tru : %f, fea : %f, sur : %f, sad : %f, dis : %f, ang : %f, none : %f'  %(categorized_scores['ant'] ,categorized_scores['joy'], categorized_scores['tru'], categorized_scores['fea'], categorized_scores['sur'], categorized_scores['sad'], categorized_scores['dis'], categorized_scores['ang'], categorized_scores['none']))
 
     json_val = json.dumps(categorized_scores)
-    print ('json_val = %s' % json_val)
-    print ('json_val type = %s' % type(json_val))
-    print('\n')

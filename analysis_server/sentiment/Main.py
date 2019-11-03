@@ -50,13 +50,13 @@ def categorize_word_chunks(chunks, lexicons):
                 scores['NEUT'] += row['NEUT']
                 scores['COMP'] += row['COMP']
                 scores['None'] += row['None']
-                print('NGRAM : %s, POS : %f, NEG : %f, NEU : %f'%(row['ngram'], scores['POS'], scores['NEG'], scores['NEUT']))
 
     return scores_to_percentiles(scores)
 
 def user_sentiment_analysis(sentiment_data_frame, userid):
     # Get data and Read files
-    raw_data = open('/home/wwj/analysis_server/member_data/output_twitter_%s.txt'%(userid),encoding='utf-8')
+#    raw_data = open('/home/wwj/analysis_server/member_data/output_twitter_%s.txt'%(userid),encoding='utf-8')
+    raw_data = open('/home/wwj/analysis_server/member_data/output_twitter.txt',encoding='utf-8')
     # raw_data = open('resources/example.txt', encoding='utf-8')
 
     # Split sentences to chunks
@@ -65,10 +65,7 @@ def user_sentiment_analysis(sentiment_data_frame, userid):
     categorized_scores = categorize_word_chunks(word_chunks, sentiment_data_frame)
 
     print('Sentiment Score for %s'%(userid))
-
     print ('POS : %f, NEG : %f, NEUT : %f' %(categorized_scores['POS'] ,categorized_scores['NEG'], categorized_scores['NEUT']))
-
     json_val = json.dumps(categorized_scores)
-    print ('json_val = %s' % json_val)
-    print ('json_val type = %s' % type(json_val))
-    print('\n')
+
+    return categorized_scores

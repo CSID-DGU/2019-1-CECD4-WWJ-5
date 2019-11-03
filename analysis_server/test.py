@@ -4,9 +4,9 @@ import os
 
 from crawler import tweetcrawler
 from user_list import DB_IDlistup
+from sentiment import SentUpdate
 from sentiment import Main
 from sentiment import emotion
-from multiprocessing import Process
 
 
 
@@ -35,8 +35,11 @@ if __name__ == '__main__':
         tweetcrawler.crawling_process(user_lists)
 
         for x,y in user_lists:
-            Main.user_sentiment_analysis(sentiment_data_frame, x)
-            emotion.user_emotion_analysis(emotion_data_frame,x)
+            sent_score = Main.user_sentiment_analysis(sentiment_data_frame, x)
+            emot_score = emotion.user_emotion_analysis(emotion_data_frame,x)
+            print ('POS : %f, NEG : %f, NEUT : %f' %(sent_score['POS'] ,sent_score['NEG'], sent_score['NEUT']))
+            print ('ant : %f, joy : %f, tru : %f, fea : %f, sur : %f, sad : %f, dis : %f, ang : %f, none : %f'  %(emot_score['ant'] ,emot_score['joy'], emot_score['tru'], emot_score['fea'], emot_score['sur'], emot_score['sad'], emot_score['dis'], emot_score['ang'], emot_score['none']))
 
+            SentUpdate.db_update(sent_score, emot_score, x)
 
-        time.sleep(30)
+        time.sleep(300000)

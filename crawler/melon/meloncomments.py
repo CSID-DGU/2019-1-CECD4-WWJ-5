@@ -11,7 +11,7 @@ headers = {
 
 #User-Agent가 없으면 사이트로 접근이 되지 않았다. 따라서 headers를 넣어준다.
 
-melonmusic ="https://www.melon.com/album/detail.htm?albumId=2173025"
+melonmusic ="https://www.melon.com/album/detail.htm?albumId=2181752"
 html = requests.get(melonmusic, headers = headers)
 print(html)
 soup = BeautifulSoup(html.text, "html.parser")
@@ -20,12 +20,12 @@ tags = soup.body.find("script", {"type":"application/ld+json"})
 
 #print(tags)
 
-file = open('5_melon.txt', 'w')
+file = open('melon.txt', 'w')
 file.write(str(tags))
 file.close()
 
-with open("5_melon_processed.txt", "w") as fi:
-    with open("5_melon.txt", 'r') as f:
+with open("melon_processed.txt", "w") as fi:
+    with open("melon.txt", 'r') as f:
         line_data = f.read()
         start = line_data.find('description\": \"')
         start = start + 15
@@ -35,8 +35,8 @@ with open("5_melon_processed.txt", "w") as fi:
 
 
 # 입,출력 파일명
-INPUT_FILE_NAME = '5_melon_processed.txt'
-OUTPUT_FILE_NAME = '5_melon_result.txt'
+INPUT_FILE_NAME = 'melon_processed.txt'
+OUTPUT_FILE_NAME = '80_melon_result.txt'
 
 def clean_text(text):
     cleaned_text = re.sub('&lt;/strong&gt;' , '', text)

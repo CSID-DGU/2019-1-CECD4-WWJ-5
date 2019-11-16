@@ -179,15 +179,15 @@ module.exports = function (app) {
 
   router.get('/blog1', function(req, res){
     res.status(200);
-    var fst_val = 0.0000;
-    var fst_emotion = 'none'
-    var snd_val = 0.0000;
-    var snd_emotion = 'none'
     var queryString = 'SELECT * FROM emotion WHERE userid=?';
     connection.query(queryString, req.session.userID, function(err, rows){
       if(err){
         console.log(err);
       } else {
+          var fst_val = 0.0000;
+          var fst_emotion = 'none'
+          var snd_val = 0.0000;
+          var snd_emotion = 'none'
           if(rows[0].ant > 0){
             if(fst_val<rows[0].ant){
               snd_val = fst_val;
@@ -276,14 +276,14 @@ module.exports = function (app) {
               snd_emotion = '분노';
             }
           }
-      } //else
-    });
-    res.render('blog-standard', {
-      url: req.url,
-      login: req.session.login,
-      username: req.session.username,
-      user_sentiment1: fst_emotion,
-      user_sentiment2: snd_emotion
+          res.render('blog-standard', {
+            url: req.url,
+            login: req.session.login,
+            username: req.session.username,
+            user_sentiment1: fst_emotion,
+            user_sentiment2: snd_emotion
+          });
+        } //else
     });
   })
 

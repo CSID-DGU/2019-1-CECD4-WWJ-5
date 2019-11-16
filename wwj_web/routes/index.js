@@ -179,10 +179,111 @@ module.exports = function (app) {
 
   router.get('/blog1', function(req, res){
     res.status(200);
-    res.render('blog-standard', {
-      url: req.url,
-      login: req.session.login,
-      username: req.session.username
+    var queryString = 'SELECT * FROM emotion WHERE userid=?';
+    connection.query(queryString, req.session.userID, function(err, rows){
+      if(err){
+        console.log(err);
+      } else {
+          var fst_val = 0.0000;
+          var fst_emotion = 'none'
+          var snd_val = 0.0000;
+          var snd_emotion = 'none'
+          if(rows[0].ant > 0){
+            if(fst_val<rows[0].ant){
+              snd_val = fst_val;
+              snd_emotion = fst_emotion;
+              fst_val = rows[0].ant;
+              fst_emotion = 'ant';
+            } else if(snd_val<rows[0].ant){
+              snd_val = rows[0].ant;
+              snd_emotion = 'ant';
+            }
+          }
+          if(rows[0].joy > 0){
+            if(fst_val<rows[0].joy){
+              snd_val = fst_val;
+              snd_emotion = fst_emotion;
+              fst_val = rows[0].joy;
+              fst_emotion = 'joy';
+            } else if(snd_val<rows[0].joy){
+              snd_val = rows[0].joy;
+              snd_emotion = 'joy';
+            }
+          }
+          if(rows[0].tru > 0){
+            if(fst_val<rows[0].tru){
+              snd_val = fst_val;
+              snd_emotion = fst_emotion;
+              fst_val = rows[0].tru;
+              fst_emotion = 'tru';
+            } else if(snd_val<rows[0].tru){
+              snd_val = rows[0].tru;
+              snd_emotion = 'tru';
+            }
+          }
+          if(rows[0].fea > 0){
+            if(fst_val<rows[0].fea){
+              snd_val = fst_val;
+              snd_emotion = fst_emotion;
+              fst_val = rows[0].fea;
+              fst_emotion = 'fea';
+            } else if(snd_val<rows[0].fea){
+              snd_val = rows[0].fea;
+              snd_emotion = 'fea';
+            }
+          }
+          if(rows[0].sur > 0){
+            if(fst_val<rows[0].sur){
+              snd_val = fst_val;
+              snd_emotion = fst_emotion;
+              fst_val = rows[0].sur;
+              fst_emotion = 'sur';
+            } else if(snd_val<rows[0].sur){
+              snd_val = rows[0].sur;
+              snd_emotion = 'sur';
+            }
+          }
+          if(rows[0].sad > 0){
+            if(fst_val<rows[0].sad){
+              snd_val = fst_val;
+              snd_emotion = fst_emotion;
+              fst_val = rows[0].sad;
+              fst_emotion = 'sad';
+            } else if(snd_val<rows[0].sad){
+              snd_val = rows[0].sad;
+              snd_emotion = 'sad';
+            }
+          }
+          if(rows[0].dis > 0){
+            if(fst_val<rows[0].dis){
+              snd_val = fst_val;
+              snd_emotion = fst_emotion;
+              fst_val = rows[0].dis;
+              fst_emotion = 'dis';
+            } else if(snd_val<rows[0].dis){
+              snd_val = rows[0].dis;
+              snd_emotion = 'dis';
+            }
+          }
+          if(rows[0].ang > 0){
+            if(fst_val<rows[0].ang){
+              snd_val = fst_val;
+              snd_emotion = fst_emotion;
+              fst_val = rows[0].ang;
+              fst_emotion = 'ang';
+            } else if(snd_val<rows[0].ang){
+              snd_val = rows[0].ang;
+              snd_emotion = 'ang';
+            }
+          }
+          res.render('blog-standard', {
+          url: req.url,
+          login: req.session.login,
+          username: req.session.username,
+          user_sentiment1: fst_emotion,
+          user_sentiment2: snd_emotion
+        });
+      }
     });
   })
 

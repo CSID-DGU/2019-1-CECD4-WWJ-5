@@ -269,8 +269,8 @@
             <p><br>
             큐플리 서비스를 제공받기 위해서는 데이터 분석을 실행할 SNS 계정을 등록해야 합니다.<br>
             <% if(user_sentiment1 && user_sentiment2) { %>
-              <%- username %>님의 최근 감정 상태는 <%- user_sentiment1 %>, <%- user_sentiment2 %>이며,<br>
-              최근 관심사는 user_interest1, user_interest2, user_interest3입니다. <br>
+              <%- username %>님의 최근 감정 상태는 <b><%- user_sentiment1 %></b>, <b><%- user_sentiment2 %></b>이며,<br>
+              최근 관심사는 <b>user_interest1</b>, <b>user_interest2</b>, <b>user_interest3</b>입니다. <br>
               아래는 <%- username %>님의 최근 감정 상태와 관심사를 기반으로 추천된 노래입니다.<br>
               링크를 클릭하시면 해당 곡을 감상하실 수 있습니다.<br><br>
               recom_music1
@@ -280,8 +280,6 @@
               만일 트위터 아이디를 등록하지 않으셨다면 'SNS Regist' 페이지를 통해 등록해주세요.
             <% } %>
             <p>
-            <button type="button" id="registerSNSid" data-target="#ModalSNSID" data-toggle="modal"class="btn btn-primary btn-block btn-lg">Register</button>
-
           </div> <!-- end col -->
 
         </div>

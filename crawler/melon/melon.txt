@@ -1,0 +1,28 @@
+<script type="application/ld+json">
+{
+	"@context": "http://schema.org",
+	"@type": "MusicAlbum",
+	"url": [
+			"http://www.melon.com/album/detail.htm?albumId=2181752&ref=google",
+			"android-app://com.iloen.melon/melonapp/details/album/2181752?autoplay=Y&ref=google&pvmenuid=1000000461&contstype=N10002&contsid=2181752"
+	],
+	"image": "http://image.melon.co.kr/cm/album/images/021/81/752/2181752.jpg",
+	"name": "Ambler",
+	"sameAs": "http://www.melon.com/album/detail.htm?albumId=2181752",
+	"description": "&lt;p&gt;	&lt;strong&gt;봄, 꽃 그리고 스탠딩에그의 새 미니앨범 [Ambler]&lt;/strong&gt;&lt;br /&gt;	&lt;br /&gt;	언제나 한 결 같이 맑고 포근한 어쿠스틱 감성을 들려주는 스탠딩에그가 꽃향기 머금은 봄바람 같은 신보 [Ambler]로 돌아왔다. 이번 앨범의 제목인 [Ambler]는 &amp;#39;느리게 걷는 사람&amp;#39;이란 뜻으로 앨범 전체가 그에 어울리는 소소함과 여유, 순수함으로 가득하다. miss A의 수지를 비롯해 소이현, 박보영 등 수많은 이들이 &amp;#39;힐링뮤직&amp;#39;으로 선택한 스탠딩에그의 음악 특유의 &amp;#39;힐링 효과&amp;#39;는 이번 앨범에서도 계속된다.&lt;br /&gt;	&lt;br /&gt;	1. &amp;quot;Miss Flower&amp;quot;&lt;br /&gt;	조금 더 천천히 걸으면 더 많은 것들을 볼 수 있기에 꽃보다 아름다운 당신과 함께 이 길을 천천히 걷고 싶다고 이야기 하는 첫 번째 곡 &amp;quot;Miss Flower&amp;quot;는 우쿨렐레와 휘파람으로 시작되는 인트로가 마치 포근한 봄날 연인의 손을 잡고 휘파람을 불며 걷는 장면을 연상시킨다. 초반부 우쿨렐레만의 편안하고 소소한 편곡이 후반부의 컨트리 풍으로 전환되는 청량감 가득한 곡이다. 이 곡은 한국관광공사에서 외국인들을 상대로 우리나라의 아름다운 사계절과 꽃을 알리는 &amp;#39;Miss Flower Song`으로 선정되었다.&lt;br /&gt;	&lt;br /&gt;	2. &amp;quot;시간이 달라서&amp;quot;&lt;br /&gt;	지난 2월 디지털 싱글로 발매되었던 이 곡은 어쿠스틱 R&amp;amp;B스타일의 담백한 편곡이 인상적이다. 잔잔하면서 아름다운 선율과 그에 상반되는 애절한 가사가 절묘하게 어우러져 많은 이들에게 인기를 얻었던 곡으로 이번 앨범에 다시 수록되었다.&lt;br /&gt;	&lt;br /&gt;	3. &amp;quot;Lemon Pie&amp;quot;&lt;br /&gt;	상큼하고 달콤한 &amp;#39;레몬 머랭 파이&amp;#39;에 대한 애정을 재밌게 표현한 곡으로 듣는 이에 따라 각자 자신의 연인이나 친구로 빗대어 해석할 수도 있는 가사가 특징. 일상을 행복하게 만드는 자기 자신만의 소소한 `힐링 아이템`을 생각해 보게 하는 가사로 스탠딩 에그 특유의 달콤함이 가득 묻어난다. 쉬운 멜로디와 코드 진행으로 우쿨렐레를 연주하는 이들에게 또 하나의 즐거움이 될 만한 곡.&lt;br /&gt;	&lt;br /&gt;	4. &amp;quot;항상 난 그래&amp;quot;&lt;br /&gt;	어쿠스틱 기타와 퍼커션이 주를 이루는 담백한 어쿠스틱 R&amp;amp;B 넘버로 사랑하는 이에게 좋은 선물을 해주고 싶지만 결국 늘 편지만 한 장 쓰게 된다는 남자와 그 편지 한통에 늘 감동한다는 여자의 순수한 사랑이야기를 담았다. 90년대의 팝 음악을 듣는 것 같은 세련미와 가사가 주는 순수한 아름다움이 함께 녹아있는 곡이다.&lt;br /&gt;	&lt;br /&gt;	5. &amp;quot;너는 알고 있을까&amp;quot;&lt;br /&gt;	어쿠스틱 기타와 보컬로만 이루어진 발라드로 많은 이들이 힐링송으로 이야기하는 &amp;quot;Little Star&amp;quot;를 연상시키는 곡이다.스탠딩에그의 노래들은 이별노래 마저도 대체적으로 이별에 대한 지독한 상실감 대신 언젠가 다시 만나게 되지 않을까 하는 작은 기대감을 담고 있다. 이 곡에서도 &amp;#39;긴 겨울이 지나가면 어느새 또 봄이 찾아와 내 맘을 다시 감싸줄 것 같은데...&amp;#39;같은 가사가 참 인상적이다. 누구에게나 이별은 견딜 수 없을 만큼 아프지만 그 아픔을 치유하게 되는 것은 결국 또 다른 희망이기 때문이다. 그래서 스탠딩에그의 음악들은 듣는 이들로 하여금 늘 작은 위로가 되곤 한다.&lt;/p&gt;",
+	"potentialAction": {
+		"@type": "ListenAction",
+		"target": [
+					"http://www.melon.com/album/detail.htm?albumId=2181752&ref=google",
+					"android-app://com.iloen.melon/melonapp/details/album/2181752?autoplay=Y&ref=google&pvmenuid=1000000461&contstype=N10002&contsid=2181752"
+		],
+		"expectsAcceptanceOf": {
+			"@type": "Offer",
+			"eligibleRegion": {
+				"@type": "Country",
+				"name": "KR"
+			}
+		}
+	}
+}
+</script>

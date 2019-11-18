@@ -17,7 +17,7 @@ def get_tags(text, ntags=50):
 def main():
     text_file_name = "sample.txt" #분석할 파일
     noun_count = 20 #최대 많은 빈도수 부터 20개 명사 추출
-    output_file_name = "count.txt"
+    output_file_name = "count1.txt"
     open_text_file = open(text_file_name, 'r', -1, "utf-8")
     text = open_text_file.read()
     tags = get_tags(text, noun_count)

@@ -1,5 +1,5 @@
-with open("60_processed.txt", "w") as fi:
-    with open("60_ansi.txt", 'r') as f:
+with open("80_processed.txt", "w") as fi:
+    with open("80_ansi.txt", 'r') as f:
         line_num = 1
         line_data = f.readline()
         while line_data:

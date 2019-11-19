@@ -469,18 +469,20 @@ module.exports = function (app) {
               }
             } //for
           } //else
+
+          queryString3 = 'SELECT * FROM music WHERE mno=?';
+          connection.query(queryString3, recom_mno, function(err3, rows3){
+            if(err3){
+              console.log(err3);
+            } else{
+              recom_title = rows3[0].title;
+              recom_artist = rows3[0].artist;
+              recom_genre = rows3[0].genre;
+              recom_url = rows3[0].url;
+            } //else
+          });
         });
-        queryString3 = 'SELECT * FROM music WHERE mno=?';
-        connection.query(queryString3, recom_mno, function(err3, rows3){
-          if(err3){
-            console.log(err3);
-          } else{
-            recom_title = rows3[0].title;
-            recom_artist = rows3[0].artist;
-            recom_genre = rows3[0].genre;
-            recom_url = rows3[0].url;
-          } //else
-        });
+
         res.render('blog-standard', {
           url: req.url,
           login: req.session.login,

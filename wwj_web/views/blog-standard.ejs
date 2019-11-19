@@ -290,7 +290,8 @@
               최근 관심사는 <b>user_interest1</b>, <b>user_interest2</b>, <b>user_interest3</b>입니다. <br>
               아래는 <%- username %>님의 최근 감정 상태와 관심사를 기반으로 추천된 노래입니다.<br>
               링크를 클릭하시면 해당 곡을 감상하실 수 있습니다.<br><br>
-              recom_music1
+              <%- recom_artist %> - <%- recom_title %> (장르 : <%- recom_genre %>) <br>
+              <%- recom_url %>
             <% } else { %>
               아직 <%- username %>님의 SNS 데이터를 분석한 데이터가 존재하지 않습니다.
               분석 작업은 매일 1시와 13시에 자동적으로 이루어지므로 이를 기다려주시기 바랍니다.

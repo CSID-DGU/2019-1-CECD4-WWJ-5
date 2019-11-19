@@ -195,7 +195,7 @@ module.exports = function (app) {
           var sur_emotion_value = rows[0].sur;
           var sad_emotion_value = rows[0].sad;
           var dis_emotion_value = rows[0].dis;
-          var ang_emotion_value = 1;
+          var ang_emotion_value = rows[0].ant;
           if(rows[0].ant > 0){
             if(fst_val<rows[0].ant){
               snd_val = fst_val;

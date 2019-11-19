@@ -293,7 +293,6 @@ module.exports = function (app) {
             ang_emotion_value = rows[0].ang * 100;
           }
         } //else
-
         var recom_title = 'none';
         var recom_artist = 'none';
         var recom_genre = 'none';
@@ -310,7 +309,7 @@ module.exports = function (app) {
           if(err){
             console.log(err);
           } else{
-            for(int i = 0; i < 80; i++){
+            for(var i = 0; i < 80; i++){
               if(rows[i].ant > 0){
                 if(m_fst_val<rows[i].ant){
                   m_trd_val = m_snd_val;

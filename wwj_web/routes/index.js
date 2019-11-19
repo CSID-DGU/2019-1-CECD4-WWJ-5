@@ -308,6 +308,7 @@ module.exports = function (app) {
         connection.query(queryString, function(err, rows){
           if(err){
             console.log(err);
+            console.log(here);
           } else{
             for(var i = 0; i < 80; i++){
               if(rows[i].ant > 0){

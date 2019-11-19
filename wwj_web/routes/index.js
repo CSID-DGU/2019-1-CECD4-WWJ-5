@@ -188,14 +188,14 @@ module.exports = function (app) {
           var fst_emotion = 'none'
           var snd_val = 0.0000;
           var snd_emotion = 'none'
-          var ant_emotion_value = rows[0].ant;
-          var joy_emotion_value = rows[0].joy;
-          var tru_emotion_value = rows[0].tru;
-          var fea_emotion_value = rows[0].fea;
-          var sur_emotion_value = rows[0].sur;
-          var sad_emotion_value = rows[0].sad;
-          var dis_emotion_value = rows[0].dis;
-          var ang_emotion_value = rows[0].joy * 100;
+          var ant_emotion_value = rows[0].ant * 100;
+          var joy_emotion_value = rows[0].joy * 100;
+          var tru_emotion_value = rows[0].tru * 100;
+          var fea_emotion_value = rows[0].fea * 100;
+          var sur_emotion_value = rows[0].sur * 100;
+          var sad_emotion_value = rows[0].sad * 100;
+          var dis_emotion_value = rows[0].dis * 100;
+          var ang_emotion_value = rows[0].ang * 100;
           if(rows[0].ant > 0){
             if(fst_val<rows[0].ant){
               snd_val = fst_val;
@@ -206,7 +206,7 @@ module.exports = function (app) {
               snd_val = rows[0].ant;
               snd_emotion = '기대';
             }
-          }
+          } else { ant_emotion_value = 1; }
           if(rows[0].joy > 0){
             if(fst_val<rows[0].joy){
               snd_val = fst_val;
@@ -217,7 +217,7 @@ module.exports = function (app) {
               snd_val = rows[0].joy;
               snd_emotion = '기쁨';
             }
-          }
+          } else { joy_emotion_value = 1; }
           if(rows[0].tru > 0){
             if(fst_val<rows[0].tru){
               snd_val = fst_val;
@@ -228,7 +228,7 @@ module.exports = function (app) {
               snd_val = rows[0].tru;
               snd_emotion = '신뢰';
             }
-          }
+          } else { tru_emotion_value = 1; }
           if(rows[0].fea > 0){
             if(fst_val<rows[0].fea){
               snd_val = fst_val;
@@ -239,7 +239,7 @@ module.exports = function (app) {
               snd_val = rows[0].fea;
               snd_emotion = '공포';
             }
-          }
+          } else { fea_emotion_value = 1; }
           if(rows[0].sur > 0){
             if(fst_val<rows[0].sur){
               snd_val = fst_val;
@@ -250,7 +250,7 @@ module.exports = function (app) {
               snd_val = rows[0].sur;
               snd_emotion = '놀람';
             }
-          }
+          } else { sur_emotion_value = 1; }
           if(rows[0].sad > 0){
             if(fst_val<rows[0].sad){
               snd_val = fst_val;
@@ -261,7 +261,7 @@ module.exports = function (app) {
               snd_val = rows[0].sad;
               snd_emotion = '슬픔';
             }
-          }
+          } else { sad_emotion_value = 1; }
           if(rows[0].dis > 0){
             if(fst_val<rows[0].dis){
               snd_val = fst_val;
@@ -272,7 +272,7 @@ module.exports = function (app) {
               snd_val = rows[0].dis;
               snd_emotion = '혐오';
             }
-          }
+          } else { dis_emotion_value = 1; }
           if(rows[0].ang > 0){
             if(fst_val<rows[0].ang){
               snd_val = fst_val;
@@ -283,7 +283,7 @@ module.exports = function (app) {
               snd_val = rows[0].ang;
               snd_emotion = '분노';
             }
-          }
+          } else { ang_emotion_value = 1; }
           res.render('blog-standard', {
             url: req.url,
             login: req.session.login,

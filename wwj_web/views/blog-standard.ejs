@@ -270,17 +270,16 @@
             <p><br>
             <script type="text/javascript" src="wz_jsgraphics.js"></script>
             <script type="text/javascript" src="pie.js"></script>
-            <div id="pieCanvas" style="overflow:auto; position:relative; height:350px; width:380px;"></div>
+            <div id="pieCanvas" style="overflow:auto; position:relative; left:50%; right:50%; height:350px; width:380px;"></div>
             <script type="text/javascript">
               var p = new pie();
-              //p.add("기대", '<%- ant_val %>');
-              p.add("기대", 100);
-              p.add("기쁨", 100);
-              p.add("신뢰", 100);
-              p.add("공포", 100);
-              p.add("놀람", 100);
-              p.add("슬픔", 100);
-              p.add("혐오", 100);
+              p.add("기대", '<%= ant_val %>');
+              p.add("기쁨", '<%= joy_val %>');
+              p.add("신뢰", '<%= tru_val %>');
+              p.add("공포", '<%= fea_val %>');
+              p.add("놀람", '<%= sur_val %>');
+              p.add("슬픔", '<%= sad_val %>');
+              p.add("혐오", '<%= dis_val %>');
               p.add("분노", '<%= ang_val %>');
               p.render("pieCanvas", "Pie Graph")
             </script>

@@ -188,7 +188,14 @@ module.exports = function (app) {
           var fst_emotion = 'none'
           var snd_val = 0.0000;
           var snd_emotion = 'none'
-          var total_emotion_value[8] = {rows[0].ant, rows[0].joy, rows[0].tru, rows[0].fea, rows[0].sur, rows[0].sad, rows[0].dis, rows[0].ang}
+          var ant_emotion_value = rows[0].ant;
+          var joy_emotion_value = rows[0].joy;
+          var tru_emotion_value = rows[0].tru;
+          var fea_emotion_value = rows[0].fea;
+          var sur_emotion_value = rows[0].sur;
+          var sad_emotion_value = rows[0].sad;
+          var dis_emotion_value = rows[0].dis;
+          var ang_emotion_value = rows[0].ang;
           if(rows[0].ant > 0){
             if(fst_val<rows[0].ant){
               snd_val = fst_val;
@@ -282,7 +289,15 @@ module.exports = function (app) {
             login: req.session.login,
             username: req.session.username,
             user_sentiment1: fst_emotion,
-            user_sentiment2: snd_emotion
+            user_sentiment2: snd_emotion,
+            ant_val: ant_emotion_value,
+            joy_val: joy_emotion_value,
+            tru_val: tru_emotion_value,
+            fea_val: fea_emotion_value,
+            sur_val: sur_emotion_value,
+            sad_val: sad_emotion_value,
+            dis_val: dis_emotion_value,
+            ang_val: ang_emotion_value
           });
         } //else
     });

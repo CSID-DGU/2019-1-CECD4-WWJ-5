@@ -495,7 +495,7 @@ module.exports = function (app) {
           sad_val: sad_emotion_value,
           dis_val: dis_emotion_value,
           ang_val: ang_emotion_value,
-          recom_mno: recom_mno,
+          recom_mno: recom_mno,recom_mno: m_fst_emotion,
           recom_title: recom_title,
           recom_artist: recom_artist,
           recom_genre: recom_genre,

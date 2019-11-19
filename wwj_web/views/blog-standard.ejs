@@ -270,16 +270,17 @@
             <p><br>
             <script type="text/javascript" src="wz_jsgraphics.js"></script>
             <script type="text/javascript" src="pie.js"></script>
-            <div id="pieCanvas"></div>
+            <div id="pieCanvas" style="overflow:auto; position:relative; height:350px; width:380px;"></div>
             <script type="text/javascript">
               var p = new pie();
-              p.add("Jan", 100);
-              p.add("Feb", 200);
-              p.add("Mar", 150);
-              p.add("Apr", 120);
-              p.add("May", 315);
-              p.add("Jun", 415);
-              p.add("Jul", 315);
+              p.add("기대", total_emotion_value[0]);
+              p.add("기쁨", total_emotion_value[1]);
+              p.add("신뢰", total_emotion_value[2]);
+              p.add("공포", total_emotion_value[3]);
+              p.add("놀람", total_emotion_value[4]);
+              p.add("슬픔", total_emotion_value[5]);
+              p.add("혐오", total_emotion_value[6]);
+              p.add("분노", total_emotion_value[7]);
               p.render("pieCanvas", "Pie Graph")
             </script>
             <p><br>

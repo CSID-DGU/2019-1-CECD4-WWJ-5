@@ -188,6 +188,7 @@ module.exports = function (app) {
           var fst_emotion = 'none'
           var snd_val = 0.0000;
           var snd_emotion = 'none'
+          var total_emotion_value[8] = {rows[0].ant, rows[0].joy, rows[0].tru, rows[0].fea, rows[0].sur, rows[0].sad, rows[0].dis, rows[0].ang}
           if(rows[0].ant > 0){
             if(fst_val<rows[0].ant){
               snd_val = fst_val;

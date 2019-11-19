@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
+<script type="text/javascript" src="js/wz_jsgraphics.js"></script>
+<script type="text/javascript" src="js/pie.js"></script>
 <head>
   <title>Cupli</title>
 
@@ -266,6 +268,19 @@
 
           <div class="col-md-8 col-md-offset-2 col-sm-12 text-center">
             <h1><%- username %>님 안녕하세요!</h1>
+            <p><br>
+            <div id="pieCanvas" style="overflow:auto; position:relative; height:350px; width:380px;"></div>
+            <script type="text/javascript">
+              var p = new pie();
+              p.add("Jan", 100);
+              p.add("Feb", 200);
+              p.add("Mar", 150);
+              p.add("Apr", 120);
+              p.add("May", 315);
+              p.add("Jun", 415);
+              p.add("Jul", 315);
+              p.render("pieCanvas", "Pie Graph")
+            </script>
             <p><br>
             큐플리 서비스를 제공받기 위해서는 데이터 분석을 실행할 SNS 계정을 등록해야 합니다.<br>
             <% if(user_sentiment1 && user_sentiment2) { %>

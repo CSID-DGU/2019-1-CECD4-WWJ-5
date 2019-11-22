@@ -484,7 +484,7 @@ module.exports = function (app) {
               console.log(m_fst_emotion);
               if(m_fst_emotion==fst_emotion){
                 m_max_val = m_fst_val;
-                m_fst_emotion = fst_emotion;
+                m_max_emotion = m_fst_emotion;
                 m_max_mno = recom_mno;
                 console.log("match!!");
               }

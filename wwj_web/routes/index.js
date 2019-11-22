@@ -313,6 +313,7 @@ module.exports = function (app) {
             console.log("here");
             console.log(err2);
           } else{
+            console.log("hello!");
             for(var i = 0; i < rows2.length; i++){
               if(rows2[i].ant > 0){
                 if(m_fst_val<rows2[i].ant){

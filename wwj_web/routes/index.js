@@ -331,7 +331,6 @@ module.exports = function (app) {
 
               if(rows2[i].ant > 0){
                 if(m_fst_val<rows2[i].ant){
-                  console.log("here1");
                   m_trd_val = m_snd_val;
                   m_trd_emotion = m_snd_emotion;
                   m_snd_val = m_fst_val;
@@ -485,11 +484,13 @@ module.exports = function (app) {
                 }
               }
               m_list.push({m1_val:m_fst_val, m2_val:m_snd_val, m3_val:m_trd_val, m1_emo:m_fst_emotion, m2_emo:m_snd_emotion, m3_emo:m_trd_emotion, m_no:recom_mno});
+              console.log(m_fst_emotion);
               if(m_fst_emotion==fst_emotion && m_max_val>m_fst_val){
                 m_max_val = m_fst_val;
                 m_fst_emotion = fst_emotion;
                 m_max_mno = recom_mno;
               }
+              console.log(m_max_emotion);
             } //for
           } //else
         });

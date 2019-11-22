@@ -203,6 +203,9 @@ module.exports = function (app) {
     var m_fst_val = 0.0000;
     var m_snd_val = 0.0000;
     var m_trd_val = 0.0000;
+    var m_max_emotion = 'none';
+    var m_max_val = 0.0000;
+    var m_max_mno = 0;
 
     var queryString = 'SELECT * FROM emotion WHERE userid=?';
     connection.query(queryString, req.session.userID, function(err, rows){
@@ -322,6 +325,9 @@ module.exports = function (app) {
               m_fst_val = 0.0000;
               m_snd_val = 0.0000;
               m_trd_val = 0.0000;
+              m_max_emotion = 'none';
+              m_max_val = 0.0000;
+              m_max_mno = 0;
 
               if(rows2[i].ant > 0){
                 if(m_fst_val<rows2[i].ant){
@@ -479,6 +485,11 @@ module.exports = function (app) {
                 }
               }
               m_list.push({m1_val:m_fst_val, m2_val:m_snd_val, m3_val:m_trd_val, m1_emo:m_fst_emotion, m2_emo:m_snd_emotion, m3_emo:m_trd_emotion, m_no:recom_mno});
+              if(m_fst_emotion==fst_emotion && m_max_val>m_fst_val){
+                m_max_val = m_fst_val;
+                m_fst_emotion = fst_emotion;
+                m_max_mno = recom_mno;
+              }
             } //for
           } //else
         });
@@ -507,7 +518,7 @@ module.exports = function (app) {
           sad_val: sad_emotion_value,
           dis_val: dis_emotion_value,
           ang_val: ang_emotion_value,
-          recom_mno: recom_mno,recom_1: m_fst_emotion,
+          recom_mno: m_max_mno,recom_1: m_max_emotion,
           recom_title: recom_title,
           recom_artist: recom_artist,
           recom_genre: recom_genre,

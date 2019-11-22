@@ -314,8 +314,13 @@ module.exports = function (app) {
             console.log(err2);
           } else{
             console.log("hello!");
+            console.log(rows2);
+            console.log(rows2.length);
+            console.log(rows2[0].joy);
+            console.log(rows2[1].joy);
             for(var i = 0; i < rows2.length; i++){
               if(rows2[i].ant > 0){
+                console.log("1");
                 if(m_fst_val<rows2[i].ant){
                   m_trd_val = m_snd_val;
                   m_trd_emotion = m_snd_emotion;
@@ -332,10 +337,10 @@ module.exports = function (app) {
                 } else if(m_trd_val<rows2[i].ant){
                   m_trd_val = rows2[i].ant;
                   m_trd_emotino = '기대';
-
                 }
               }
               if(rows2[i].joy > 0){
+                console.log("2");
                 if(m_fst_val<rows2[i].joy){
                   m_trd_val = m_snd_val;
                   m_trd_emotion = m_snd_emotion;
@@ -355,6 +360,7 @@ module.exports = function (app) {
                 }
               }
               if(rows2[i].tru > 0){
+                console.log("3");
                 if(m_fst_val<rows2[i].tru){
                   m_trd_val = m_snd_val;
                   m_trd_emotion = m_snd_emotion;

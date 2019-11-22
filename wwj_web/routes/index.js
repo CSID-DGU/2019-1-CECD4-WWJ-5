@@ -482,13 +482,13 @@ module.exports = function (app) {
               }
               m_list.push({m1_val:m_fst_val, m2_val:m_snd_val, m3_val:m_trd_val, m1_emo:m_fst_emotion, m2_emo:m_snd_emotion, m3_emo:m_trd_emotion, m_no:recom_mno});
               console.log(m_fst_emotion);
-              if(m_fst_emotion==fst_emotion){
+              if(m_fst_emotion==fst_emotion && m_max_val<m_fst_val){
                 m_max_val = m_fst_val;
                 m_max_emotion = m_fst_emotion;
                 m_max_mno = recom_mno;
                 console.log("match!!");
               }
-              console.log(m_max_emotion);
+
             } //for
           } //else
         });
@@ -503,6 +503,8 @@ module.exports = function (app) {
         //     recom_url = rows3[0].url;
         //   } //else
         // });
+        console.log("result");
+        console.log(m_max_emotion);
         res.render('blog-standard', {
           url: req.url,
           login: req.session.login,

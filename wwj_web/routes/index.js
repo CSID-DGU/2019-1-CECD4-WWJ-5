@@ -307,6 +307,7 @@ module.exports = function (app) {
           }
         } //else
 
+        var m_list = [{m1_val:0, m2_val:0, m3_val:0, m1_emo:'none', m2_emo:'none', m3_emo:'none', m_no:0}];
         queryString2 = 'SELECT * FROM music_emotion';
         connection.query(queryString2, function(err2, rows2){
           if(err2){
@@ -314,6 +315,14 @@ module.exports = function (app) {
             console.log(err2);
           } else{
             for(var i = 0; i < rows2.length; i++){
+              recom_mno = 0;
+              m_fst_emotion = 'none';
+              m_snd_emotion = 'none';
+              m_trd_emotion = 'none';
+              m_fst_val = 0.0000;
+              m_snd_val = 0.0000;
+              m_trd_val = 0.0000;
+
               if(rows2[i].ant > 0){
                 if(m_fst_val<rows2[i].ant){
                   console.log("here1");
@@ -333,7 +342,7 @@ module.exports = function (app) {
                 } else if(m_trd_val<rows2[i].ant){
                   console.log("here3");
                   m_trd_val = rows2[i].ant;
-                  m_trd_emotino = '기대';
+                  m_trd_emotion = '기대';
                 }
               }
               if(rows2[i].joy > 0){
@@ -352,7 +361,7 @@ module.exports = function (app) {
                   m_snd_emotion = '기쁨';
                 } else if(m_trd_val<rows2[i].joy){
                   m_trd_val = rows2[i].joy;
-                  m_trd_emotino = '기쁨';
+                  m_trd_emotion = '기쁨';
                 }
               }
               if(rows2[i].tru > 0){
@@ -371,7 +380,7 @@ module.exports = function (app) {
                   m_snd_emotion = '신뢰';
                 } else if(m_trd_val<rows2[i].tru){
                   m_trd_val = rows2[i].tru;
-                  m_trd_emotino = '신뢰';
+                  m_trd_emotion = '신뢰';
                 }
               }
               if(rows2[i].fea > 0){
@@ -390,7 +399,7 @@ module.exports = function (app) {
                   m_snd_emotion = '공포';
                 } else if(m_trd_val<rows2[i].fea){
                   m_trd_val = rows2[i].fea;
-                  m_trd_emotino = '공포';
+                  m_trd_emotion = '공포';
                 }
               }
               if(rows2[i].sur > 0){
@@ -409,7 +418,7 @@ module.exports = function (app) {
                   m_snd_emotion = '놀람';
                 } else if(m_trd_val<rows2[i].sur){
                   m_trd_val = rows2[i].sur;
-                  m_trd_emotino = '놀람';
+                  m_trd_emotion = '놀람';
                 }
               }
               if(rows2[i].sad > 0){
@@ -428,7 +437,7 @@ module.exports = function (app) {
                   m_snd_emotion = '슬픔';
                 } else if(m_trd_val<rows2[i].sad){
                   m_trd_val = rows2[i].sad;
-                  m_trd_emotino = '슬픔';
+                  m_trd_emotion = '슬픔';
                 }
               }
               if(rows2[i].dis > 0){
@@ -447,7 +456,7 @@ module.exports = function (app) {
                   m_snd_emotion = '혐오';
                 } else if(m_trd_val<rows2[i].dis){
                   m_trd_val = rows2[i].dis;
-                  m_trd_emotino = '혐오';
+                  m_trd_emotion = '혐오';
                 }
               }
               if(rows2[i].ang > 0){
@@ -466,9 +475,10 @@ module.exports = function (app) {
                   m_snd_emotion = '분노';
                 } else if(m_trd_val<rows2[i].ang){
                   m_trd_val = rows2[i].ang;
-                  m_trd_emotino = '분노';
+                  m_trd_emotion = '분노';
                 }
               }
+              m_list.push({m1_val:m_fst_val, m2_val:m_snd_val, m3_val:m_trd_val, m1_emo:m_fst_emotion, m2_emo:m_snd_emotion, m3_emo:m_trd_emotion, m_no:recom_mno});
             } //for
           } //else
         });

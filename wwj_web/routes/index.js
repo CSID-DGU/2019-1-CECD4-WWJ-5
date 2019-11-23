@@ -311,6 +311,7 @@ module.exports = function (app) {
         } //else
 
         var m_list = [{m1_val:0, m2_val:0, m3_val:0, m1_emo:'none', m2_emo:'none', m3_emo:'none', m_no:0}];
+        var recom_list = [{list_artist:'none', list_title:'none', list_genre:'none', list_url:'none', list_mno:0}];
         queryString2 = 'SELECT * FROM music_emotion';
         connection.query(queryString2, function(err2, rows2){
           if(err2){
@@ -481,19 +482,17 @@ module.exports = function (app) {
                 }
               }
               m_list.push({m1_val:m_fst_val, m2_val:m_snd_val, m3_val:m_trd_val, m1_emo:m_fst_emotion, m2_emo:m_snd_emotion, m3_emo:m_trd_emotion, m_no:recom_mno});
-              console.log(m_fst_emotion);
-              if(m_fst_emotion==fst_emotion && m_max_val<m_fst_val){
+              if(m_fst_emotion==fst_emotion){
                 m_max_val = m_fst_val;
                 m_max_emotion = m_fst_emotion;
                 m_max_mno = recom_mno;
-                console.log("match!!");
               }
 
             } //for
 
 
             queryString3 = 'SELECT * FROM music WHERE mno=?';
-            connection.query(queryString3, recom_mno, function(err3, rows3){
+            connection.query(queryString3, m_max_mno, function(err3, rows3){
               if(err3){
                 console.log(err3);
               } else{

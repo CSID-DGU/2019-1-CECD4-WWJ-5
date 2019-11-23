@@ -268,25 +268,23 @@
           <div class="col-md-8 col-md-offset-2 col-sm-12 text-center">
             <h1><%- username %>님 안녕하세요!</h1>
             <p>
-            <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-            <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-            <script type="text/javascript">
-                google.load("visualization", "1", {packages:["corechart"]});
-                google.setOnLoadCallback(drawChart);
-                function drawChart()
-                {
-                    var data = google.visualization.arrayToDataTable(
-                        [[<%- username %>,"님의 감정상태"],["기대",<%= ant_val %>],["기쁨",<%= joy_val %>],["신뢰",<%= tru_val %>],
-                        ["공포",<%= fea_val %>],["놀람",<%= sur_val %>],["슬픔",<%= sad_val %>],["혐오",<%= dis_val %>],
-                        ["분노",<%= ang_val %>]]
-                    );
-                    var options = {
-                        title: '<%- username %>'"님의 감정상태"
-                    };
-                    var chart = new google.visualization.PieChart(document.getElementById("employee_piechart"));
-                    chart.draw(data, options);
-                }
-            </script>
+              <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+              <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+              <script type="text/javascript">
+                  google.load("visualization", "1", {packages:["corechart"]});
+                  google.setOnLoadCallback(drawChart);
+                  function drawChart()
+                  {
+                      var data = google.visualization.arrayToDataTable(
+                          [["Employee","Rating"],["Suresh",25],["Amit",56],["Rahul",37],["Lucky",71],["Pooja",11],["Manoj",49]]
+                      );
+                      var options = {
+                          title: "Employee Ratings"
+                      };
+                      var chart = new google.visualization.PieChart(document.getElementById("employee_piechart"));
+                      chart.draw(data, options);
+                  }
+              </script>
             <div id="employee_piechart" style="width: 900px; height: 500px;"></div>
 
             <script type="text/javascript" src="wz_jsgraphics.js"></script>

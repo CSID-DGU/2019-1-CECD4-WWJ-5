@@ -480,17 +480,11 @@ module.exports = function (app) {
                 }
               }
               m_list.push({m1_val:m_fst_val, m2_val:m_snd_val, m3_val:m_trd_val, m1_emo:m_fst_emotion, m2_emo:m_snd_emotion, m3_emo:m_trd_emotion, m_no:recom_mno});
-              console.log(recom_mno);
-              console.log(m_fst_emotion);
-              console.log(m_snd_emotion);
-              console.log(m_trd_emotion);
-              if(m_fst_emotion==fst_emotion){
+              if(m_fst_emotion==fst_emotion && m_max_val<m_fst_val){
                 m_max_val = m_fst_val;
                 m_max_emotion = m_fst_emotion;
                 m_max_mno = recom_mno;
-                // console.log(i);
-                // console.log(m_max_val);
-                // console.log(m_max_mno);
+                
               }
 
             } //for

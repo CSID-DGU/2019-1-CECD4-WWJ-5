@@ -276,7 +276,7 @@
                   function drawChart()
                   {
                       var data = google.visualization.arrayToDataTable(
-                          [["Employee","Rating"],["Suresh",<%= ant_val %>],["Amit",<%= joy_val %>],["Rahul",<%= tru_val %>],["Lucky",<%= fea_val %>],["Pooja",<%= sur_val %>],["Manoj",<%= sad_val %>],["Manojj",<%= dis_val %>],["Manojk",<%= ang_val %>]]
+                          [[<%- username %>,"Sentiment"],["기대",<%= ant_val %>],["기쁨",<%= joy_val %>],["신뢰",<%= tru_val %>],["공포",<%= fea_val %>],["놀람",<%= sur_val %>],["슬픔",<%= sad_val %>],["혐오",<%= dis_val %>],["분노",<%= ang_val %>]]
                       );
                       var options = {
                           title: "Employee Ratings"

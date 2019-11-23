@@ -507,7 +507,9 @@ module.exports = function (app) {
               });//connection3
             } //for
 
+
             console.log("result start");
+            console.log(recom_list[1]);
             res.render('blog-standard', {
               url: req.url,
               login: req.session.login,
@@ -515,10 +517,10 @@ module.exports = function (app) {
               user_sentiment1: fst_emotion, user_sentiment2: snd_emotion,
               ant_val: ant_emotion_value, joy_val: joy_emotion_value, tru_val: tru_emotion_value, fea_val: fea_emotion_value, sur_val: sur_emotion_value, sad_val: sad_emotion_value, dis_val: dis_emotion_value, ang_val: ang_emotion_value,
               recom_mno: m_max_mno,recom_1: m_max_emotion,
-              recom_title: recom_list[1].list_title,
-              recom_artist: recom_list[1].list_artist,
-              recom_genre: recom_list[1].list_genre,
-              recom_url: recom_list[1].list_url
+              recom_title: recom_title,
+              recom_artist: recom_artist,
+              recom_genre: recom_genre,
+              recom_url: recom_url
             });
 
           } //else

@@ -490,22 +490,22 @@ module.exports = function (app) {
               }
             } //for
 
-            var recom_list = [{list_title:'none', list_artist:'none', list_genre:'none', list_url:'none', list_mno:0}];
-            for(var t = 1; t < emotion_mno_list.length; t++){
-              var queryString3 = 'SELECT * FROM music WHERE mno=?';
-              connection.query(queryString3, emotion_mno_list[t].mno_list, function(err3, rows3){
-                if(err3){
-                  console.log(err3);
-                  console.log("here!");
-                } else{
-                  recom_list.push({list_title:rows3[0].title, list_artist:rows3[0].artist, list_genre:rows3[0].genre, list_url:rows3[0].url, list_mno:emotion_mno_list[t].mno_list})
-                  recom_title = rows3[0].title;
-                  recom_artist = rows3[0].artist;
-                  recom_genre = rows3[0].genre;
-                  recom_url = rows3[0].url;
-                } //else
-              });//connection3
-            } //for
+            // var recom_list = [{list_title:'none', list_artist:'none', list_genre:'none', list_url:'none', list_mno:0}];
+            // for(var t = 1; t < emotion_mno_list.length; t++){
+            //   var queryString3 = 'SELECT * FROM music WHERE mno=?';
+            //   connection.query(queryString3, emotion_mno_list[t].mno_list, function(err3, rows3){
+            //     if(err3){
+            //       console.log(err3);
+            //       console.log("here!");
+            //     } else{
+            //       recom_list.push({list_title:rows3[0].title, list_artist:rows3[0].artist, list_genre:rows3[0].genre, list_url:rows3[0].url, list_mno:emotion_mno_list[t].mno_list})
+            //       recom_title = rows3[0].title;
+            //       recom_artist = rows3[0].artist;
+            //       recom_genre = rows3[0].genre;
+            //       recom_url = rows3[0].url;
+            //     } //else
+            //   });//connection3
+            // } //for
 
 
             console.log("result start");

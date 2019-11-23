@@ -311,7 +311,7 @@ module.exports = function (app) {
         } //else
 
         var m_list = [{m1_val:0, m2_val:0, m3_val:0, m1_emo:'none', m2_emo:'none', m3_emo:'none', m_no:0}];
-        var recom_list = [{list_artist:'none', list_title:'none', list_genre:'none', list_url:'none', list_mno:0}];
+        var emotion_mno_list = [{mno_list:-1}];
         var queryString2 = 'SELECT * FROM music_emotion';
         connection.query(queryString2, function(err2, rows2){
           if(err2){
@@ -481,40 +481,56 @@ module.exports = function (app) {
               }
               m_list.push({m1_val:m_fst_val, m2_val:m_snd_val, m3_val:m_trd_val, m1_emo:m_fst_emotion, m2_emo:m_snd_emotion, m3_emo:m_trd_emotion, m_no:recom_mno});
 
+
               if(m_fst_emotion==fst_emotion && m_max_val<m_fst_val){
                 m_max_val = m_fst_val;
                 m_max_emotion = m_fst_emotion;
                 m_max_mno = recom_mno;
+                emotion_mno_list.push({mno_list:recom_mno});
               }
             } //for
 
+            var recom_list = [{list_title:'none', list_artist:'none', list_genre:'none', list_url:'none', list_mno:0}];
+            for(var t = 1; t < emotion_mno_list.length; t++){
+              var queryString3 = 'SELECT * FROM music WHERE mno=?';
+              connection.query(queryString3, emotion_mno_list[t].mno_list, function(err3, rows3){
+                if(err3){
+                  console.log(err3);
+                } else{
+                  recom_list.push({list_title:rows3[0].title, list_artist:rows3[0].artist, list_genre:rows3[0].genre, list_url:rows3[0].url, list_mno:emotion_mno_list[t].mno_list})
+                  //recom_title = rows3[0].title;
+                  //recom_artist = rows3[0].artist;
+                  //recom_genre = rows3[0].genre;
+                  //recom_url = rows3[0].url;
+                } //else
+              });//connection3
+            } //for
 
-            var queryString3 = 'SELECT * FROM music WHERE mno=?';
-            connection.query(queryString3, m_max_mno, function(err3, rows3){
-              if(err3){
-                console.log(err3);
-              } else{
-                recom_title = rows3[0].title;
-                recom_artist = rows3[0].artist;
-                recom_genre = rows3[0].genre;
-                recom_url = rows3[0].url;
+            console.log("result start");
+            res.render('blog-standard', {
+              url: req.url,
+              login: req.session.login,
+              username: req.session.username,
+              user_sentiment1: fst_emotion, user_sentiment2: snd_emotion,
+              ant_val: ant_emotion_value, joy_val: joy_emotion_value, tru_val: tru_emotion_value, fea_val: fea_emotion_value, sur_val: sur_emotion_value, sad_val: sad_emotion_value, dis_val: dis_emotion_value, ang_val: ang_emotion_value,
+              recom_mno: recom_list[1].list_mno,
+              recom_title: recom_list[1].list_title,
+              recom_artist: recom_list[1].list_artist,
+              recom_genre: recom_list[1].list_genre,
+              recom_url: recom_list[1].list_url,
 
-                console.log("result");
-                console.log(m_max_emotion);
-                res.render('blog-standard', {
-                  url: req.url,
-                  login: req.session.login,
-                  username: req.session.username,
-                  user_sentiment1: fst_emotion, user_sentiment2: snd_emotion,
-                  ant_val: ant_emotion_value, joy_val: joy_emotion_value, tru_val: tru_emotion_value, fea_val: fea_emotion_value, sur_val: sur_emotion_value, sad_val: sad_emotion_value, dis_val: dis_emotion_value, ang_val: ang_emotion_value,
-                  recom_mno: m_max_mno,recom_1: m_max_emotion,
-                  recom_title: recom_title,
-                  recom_artist: recom_artist,
-                  recom_genre: recom_genre,
-                  recom_url: recom_url
-                });
-              } //else
-            });//connection3
+              recom_mno2: recom_list[2].list_mno,
+              recom_title2: recom_list[2].list_title,
+              recom_artist2: recom_list[2].list_artist,
+              recom_genre2: recom_list[2].list_genre,
+              recom_url2: recom_list[2].list_url,
+
+              recom_mno3: recom_list[3].list_mno,
+              recom_title3: recom_list[3].list_title,
+              recom_artist3: recom_list[3].list_artist,
+              recom_genre3: recom_list[3].list_genre,
+              recom_url3: recom_list[3].list_url
+            });
 
           } //else
         });//connection2

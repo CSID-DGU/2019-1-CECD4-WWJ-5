@@ -276,10 +276,12 @@
                 function drawChart()
                 {
                     var data = google.visualization.arrayToDataTable(
-                        [["Employee","Rating"],["Suresh",25],["Amit",56],["Rahul",37],["Lucky",71],["Pooja",11],["Manoj",49]]
+                        [['<%- username %>',"님의 감정상태"],["기대",'<%= ant_val %>'],["기쁨",'<%= joy_val %>'],["신뢰",'<%= tru_val %>'],
+                        ["공포",'<%= fea_val %>'],["놀람",'<%= sur_val %>'],["슬픔",'<%= sad_val %>'],["혐오",'<%= dis_val %>'],
+                        ["분노",'<%= ang_val %>']]
                     );
                     var options = {
-                        title: "Employee Ratings"
+                        title: '<%- username %>'"님의 감정상태"
                     };
                     var chart = new google.visualization.PieChart(document.getElementById("employee_piechart"));
                     chart.draw(data, options);

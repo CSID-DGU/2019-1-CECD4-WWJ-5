@@ -503,6 +503,8 @@ module.exports = function (app) {
                 recom_artist = rows3[0].artist;
                 recom_genre = rows3[0].genre;
                 recom_url = rows3[0].url;
+                var temp_url = recom_url.substring(32, 11);
+                recom_url = "https://www.youtube.com/embed/"+temp_url;
 
                 res.render('blog-standard', {
                   url: req.url,

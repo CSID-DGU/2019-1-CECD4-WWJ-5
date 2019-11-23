@@ -312,7 +312,7 @@
               링크를 클릭하시면 해당 곡을 감상하실 수 있습니다.<br><br>
               <%- recom_artist %> - <%- recom_title %> (장르 : <%- recom_genre %>) <br>
               <%- recom_url %> <br>
-              <iframe width="720" height="480" src="https://www.youtube.com/embed/3OGipn2RWkI?start=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <iframe width="720" height="480" src="<%- recom_url %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               <p>
             <% } else { %>
               아직 <%- username %>님의 SNS 데이터를 분석한 데이터가 존재하지 않습니다.

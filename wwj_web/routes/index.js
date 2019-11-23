@@ -509,7 +509,7 @@ module.exports = function (app) {
 
 
             console.log("result start");
-            console.log(recom_list[1]);
+            //console.log(recom_list[1]);
             res.render('blog-standard', {
               url: req.url,
               login: req.session.login,

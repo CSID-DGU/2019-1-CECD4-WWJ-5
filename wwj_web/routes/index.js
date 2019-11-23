@@ -486,6 +486,9 @@ module.exports = function (app) {
                 m_max_val = m_fst_val;
                 m_max_emotion = m_fst_emotion;
                 m_max_mno = recom_mno;
+                console.log(i);
+                console.log(m_max_val);
+                console.log(m_max_mno);
               }
 
             } //for

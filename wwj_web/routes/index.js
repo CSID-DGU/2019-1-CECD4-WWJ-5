@@ -314,7 +314,7 @@ module.exports = function (app) {
         var emotion_mno_list = [-1];
         var sub_mno_list = [-1];
         var sub_rec_mno = Math.floor(Math.random()*80)+1;
-        console,log("random");
+        console.log("random");
         console.log(sub_rec_mno);
         var queryString2 = 'SELECT * FROM music_emotion';
         connection.query(queryString2, function(err2, rows2){

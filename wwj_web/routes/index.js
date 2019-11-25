@@ -205,7 +205,7 @@ module.exports = function (app) {
     var m_trd_val = 0.0000;
     var m_max_emotion = 'none';
     var m_max_val = 0.0000;
-    var m_max_mno = 0;
+    var m_max_mno = -1;
 
     var queryString = 'SELECT * FROM emotion WHERE userid=?';
     connection.query(queryString, req.session.userID, function(err, rows){
@@ -312,6 +312,10 @@ module.exports = function (app) {
 
         var m_list = [{m1_val:0, m2_val:0, m3_val:0, m1_emo:'none', m2_emo:'none', m3_emo:'none', m_no:0}];
         var emotion_mno_list = [-1];
+        var sub_mno_list = [-1];
+        var sub_rec_mno = Math.floor(Math.rondom()*80)+1;
+        console,log("random");
+        console.log(sub_rec_mno);
         var queryString2 = 'SELECT * FROM music_emotion';
         connection.query(queryString2, function(err2, rows2){
           if(err2){
@@ -487,8 +491,15 @@ module.exports = function (app) {
                 m_max_emotion = m_fst_emotion;
                 m_max_mno = recom_mno;
                 emotion_mno_list.push(recom_mno);
+              } else if(fst_emotion==m_snd_emotion || fst_emotion==m_trd_emotion){
+                sub_mno_list.push(recom_mno);
+                sub_rec_mno = recom_mno;
               }
             } //for
+
+            if(m_max_mno==-1){
+              m_max_mno = sub_rec_mno;
+            }
 
             //var recom_list = [{list_title:'none', list_artist:'none', list_genre:'none', list_url:'none', list_mno:0}];
 

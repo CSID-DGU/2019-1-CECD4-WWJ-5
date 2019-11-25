@@ -313,7 +313,7 @@ module.exports = function (app) {
         var m_list = [{m1_val:0, m2_val:0, m3_val:0, m1_emo:'none', m2_emo:'none', m3_emo:'none', m_no:0}];
         var emotion_mno_list = [-1];
         var sub_mno_list = [-1];
-        var sub_rec_mno = Math.floor(Math.rondom()*80)+1;
+        var sub_rec_mno = Math.floor(Math.random()*80)+1;
         console,log("random");
         console.log(sub_rec_mno);
         var queryString2 = 'SELECT * FROM music_emotion';

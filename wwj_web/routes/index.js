@@ -183,7 +183,7 @@ module.exports = function (app) {
 
     var queryString_fst = 'SELECT twtid FROM user WHERE userid=?';
     connection.query(queryString_fst, req.session.userID, function(err_fst, rows_fst){
-      if(err){
+      if(err_fst){
         console.log(err_fst);
       } else{
         usertwtid = rows_fst[0].twtid;
@@ -538,7 +538,7 @@ module.exports = function (app) {
                     });
                   } //else
                 });//connection3
-    
+
               } //else
             });//connection2
 

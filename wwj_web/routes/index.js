@@ -186,9 +186,9 @@ module.exports = function (app) {
       if(err_fst){
         console.log(err_fst);
       } else{
-        usertwtid = rows_fst[0].twtid;
+        //usertwtid = rows_fst[0].twtid;
 
-        if(usertwtid == 'none'){
+        if(rows_fst[0].twtid){
           var fst_val = 0.0000;
           var fst_emotion = 'none'
           var snd_val = 0.0000;
@@ -544,9 +544,7 @@ module.exports = function (app) {
               });//connection2
 
           });//connection1
-        }
-
-        else{
+        } else{
           res.render('blog-standard', {
             url: req.url,
             login: req.session.login,
@@ -558,7 +556,7 @@ module.exports = function (app) {
             recom_artist: recom_artist,
             recom_genre: recom_genre,
             recom_url: recom_url,
-            usertwtid: usertwtid
+            usertwtid: rows_fst[0].twtid
           });
         }
       } //else

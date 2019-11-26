@@ -179,361 +179,374 @@ module.exports = function (app) {
 
   router.get('/blog1', function(req, res){
     res.status(200);
+    var usertwtid = 'none';
 
-    var fst_val = 0.0000;
-    var fst_emotion = 'none'
-    var snd_val = 0.0000;
-    var snd_emotion = 'none'
-    var ant_emotion_value = 0;
-    var joy_emotion_value = 0;
-    var tru_emotion_value = 0;
-    var fea_emotion_value = 0;
-    var sur_emotion_value = 0;
-    var sad_emotion_value = 0;
-    var dis_emotion_value = 0;
-    var ang_emotion_value = 0;
-    var recom_title = 'none';
-    var recom_artist = 'none';
-    var recom_genre = 'none';
-    var recom_url = 'none';
-    var recom_mno = 0;
-    var m_fst_emotion = 'none';
-    var m_snd_emotion = 'none';
-    var m_trd_emotion = 'none';
-    var m_fst_val = 0.0000;
-    var m_snd_val = 0.0000;
-    var m_trd_val = 0.0000;
-    var m_max_emotion = 'none';
-    var m_max_val = 0.0000;
-    var m_max_mno = -1;
-
-    var queryString = 'SELECT * FROM emotion WHERE userid=?';
-    connection.query(queryString, req.session.userID, function(err, rows){
+    var queryString_fst = 'SELECT twtid FROM user WHERE userid=?';
+    connection.query(queryString_fst, req.session.userID, function(err_fst, rows_fst){
       if(err){
-        console.log(err);
-      } else {
-          if(rows[0].ant > 0){
-            if(fst_val<rows[0].ant){
-              snd_val = fst_val;
-              snd_emotion = fst_emotion;
-              fst_val = rows[0].ant;
-              fst_emotion = '기대';
-            } else if(snd_val<rows[0].ant){
-              snd_val = rows[0].ant;
-              snd_emotion = '기대';
-            }
-            ant_emotion_value = rows[0].ant * 100;
-          }
-          if(rows[0].joy > 0){
-            if(fst_val<rows[0].joy){
-              snd_val = fst_val;
-              snd_emotion = fst_emotion;
-              fst_val = rows[0].joy;
-              fst_emotion = '기쁨';
-            } else if(snd_val<rows[0].joy){
-              snd_val = rows[0].joy;
-              snd_emotion = '기쁨';
-            }
-            joy_emotion_value = rows[0].joy * 100;
-          }
-          if(rows[0].tru > 0){
-            if(fst_val<rows[0].tru){
-              snd_val = fst_val;
-              snd_emotion = fst_emotion;
-              fst_val = rows[0].tru;
-              fst_emotion = '신뢰';
-            } else if(snd_val<rows[0].tru){
-              snd_val = rows[0].tru;
-              snd_emotion = '신뢰';
-            }
-            tru_emotion_value = rows[0].tru * 100;
-          }
-          if(rows[0].fea > 0){
-            if(fst_val<rows[0].fea){
-              snd_val = fst_val;
-              snd_emotion = fst_emotion;
-              fst_val = rows[0].fea;
-              fst_emotion = '공포';
-            } else if(snd_val<rows[0].fea){
-              snd_val = rows[0].fea;
-              snd_emotion = '공포';
-            }
-            fea_emotion_value = rows[0].fea * 100;
-          }
-          if(rows[0].sur > 0){
-            if(fst_val<rows[0].sur){
-              snd_val = fst_val;
-              snd_emotion = fst_emotion;
-              fst_val = rows[0].sur;
-              fst_emotion = '놀람';
-            } else if(snd_val<rows[0].sur){
-              snd_val = rows[0].sur;
-              snd_emotion = '놀람';
-            }
-            sur_emotion_value = rows[0].sur * 100;
-          }
-          if(rows[0].sad > 0){
-            if(fst_val<rows[0].sad){
-              snd_val = fst_val;
-              snd_emotion = fst_emotion;
-              fst_val = rows[0].sad;
-              fst_emotion = '슬픔';
-            } else if(snd_val<rows[0].sad){
-              snd_val = rows[0].sad;
-              snd_emotion = '슬픔';
-            }
-            sad_emotion_value = rows[0].sad * 100;
-          }
-          if(rows[0].dis > 0){
-            if(fst_val<rows[0].dis){
-              snd_val = fst_val;
-              snd_emotion = fst_emotion;
-              fst_val = rows[0].dis;
-              fst_emotion = '혐오';
-            } else if(snd_val<rows[0].dis){
-              snd_val = rows[0].dis;
-              snd_emotion = '혐오';
-            }
-            dis_emotion_value = rows[0].dis * 100;
-          }
-          if(rows[0].ang > 0){
-            if(fst_val<rows[0].ang){
-              snd_val = fst_val;
-              snd_emotion = fst_emotion;
-              fst_val = rows[0].ang;
-              fst_emotion = '분노';
-            } else if(snd_val<rows[0].ang){
-              snd_val = rows[0].ang;
-              snd_emotion = '분노';
-            }
-            ang_emotion_value = rows[0].ang * 100;
-          }
-        } //else
+        console.log(err_fst);
+      } else{
+        usertwtid = rows_fst[0].twtid;
 
-        var m_list = [{m1_val:0, m2_val:0, m3_val:0, m1_emo:'none', m2_emo:'none', m3_emo:'none', m_no:0}];
-        var emotion_mno_list = [-1];
-        var sub_mno_list = [-1];
-        var sub_rec_mno = Math.floor(Math.random()*80)+1;
-        var queryString2 = 'SELECT * FROM music_emotion';
-        connection.query(queryString2, function(err2, rows2){
-          if(err2){
-            console.log("here");
-            console.log(err2);
-          } else{
-            for(var i = 0; i < rows2.length; i++){
-              recom_mno = 0;
-              m_fst_emotion = 'none';
-              m_snd_emotion = 'none';
-              m_trd_emotion = 'none';
-              m_fst_val = 0.0000;
-              m_snd_val = 0.0000;
-              m_trd_val = 0.0000;
+        var fst_val = 0.0000;
+        var fst_emotion = 'none'
+        var snd_val = 0.0000;
+        var snd_emotion = 'none'
+        var ant_emotion_value = 0;
+        var joy_emotion_value = 0;
+        var tru_emotion_value = 0;
+        var fea_emotion_value = 0;
+        var sur_emotion_value = 0;
+        var sad_emotion_value = 0;
+        var dis_emotion_value = 0;
+        var ang_emotion_value = 0;
+        var recom_title = 'none';
+        var recom_artist = 'none';
+        var recom_genre = 'none';
+        var recom_url = 'none';
+        var recom_mno = 0;
+        var m_fst_emotion = 'none';
+        var m_snd_emotion = 'none';
+        var m_trd_emotion = 'none';
+        var m_fst_val = 0.0000;
+        var m_snd_val = 0.0000;
+        var m_trd_val = 0.0000;
+        var m_max_emotion = 'none';
+        var m_max_val = 0.0000;
+        var m_max_mno = -1;
 
-              if(rows2[i].ant > 0){
-                if(m_fst_val<rows2[i].ant){
-                  m_trd_val = m_snd_val;
-                  m_trd_emotion = m_snd_emotion;
-                  m_snd_val = m_fst_val;
-                  m_snd_emotion = m_fst_emotion;
-                  m_fst_val = rows2[i].ant;
-                  m_fst_emotion = '기대';
-                  recom_mno = rows2[i].mno;
-                } else if(m_snd_val<rows2[i].ant){
-                  m_trd_val = m_snd_val;
-                  m_trd_emotion = m_snd_emotion;
-                  m_snd_val = rows2[i].ant;
-                  m_snd_emotion = '기대';
-                } else if(m_trd_val<rows2[i].ant){
-                  m_trd_val = rows2[i].ant;
-                  m_trd_emotion = '기대';
+        var queryString = 'SELECT * FROM emotion WHERE userid=?';
+        connection.query(queryString, req.session.userID, function(err, rows){
+          if(err){
+            console.log(err);
+          } else {
+              if(rows[0].ant > 0){
+                if(fst_val<rows[0].ant){
+                  snd_val = fst_val;
+                  snd_emotion = fst_emotion;
+                  fst_val = rows[0].ant;
+                  fst_emotion = '기대';
+                } else if(snd_val<rows[0].ant){
+                  snd_val = rows[0].ant;
+                  snd_emotion = '기대';
                 }
+                ant_emotion_value = rows[0].ant * 100;
               }
-              if(rows2[i].joy > 0){
-                if(m_fst_val<rows2[i].joy){
-                  m_trd_val = m_snd_val;
-                  m_trd_emotion = m_snd_emotion;
-                  m_snd_val = m_fst_val;
-                  m_snd_emotion = m_fst_emotion;
-                  m_fst_val = rows2[i].joy;
-                  m_fst_emotion = '기쁨';
-                  recom_mno = rows2[i].mno;
-                } else if(m_snd_val<rows2[i].joy){
-                  m_trd_val = m_snd_val;
-                  m_trd_emotion = m_snd_emotion;
-                  m_snd_val = rows2[i].joy;
-                  m_snd_emotion = '기쁨';
-                } else if(m_trd_val<rows2[i].joy){
-                  m_trd_val = rows2[i].joy;
-                  m_trd_emotion = '기쁨';
+              if(rows[0].joy > 0){
+                if(fst_val<rows[0].joy){
+                  snd_val = fst_val;
+                  snd_emotion = fst_emotion;
+                  fst_val = rows[0].joy;
+                  fst_emotion = '기쁨';
+                } else if(snd_val<rows[0].joy){
+                  snd_val = rows[0].joy;
+                  snd_emotion = '기쁨';
                 }
+                joy_emotion_value = rows[0].joy * 100;
               }
-              if(rows2[i].tru > 0){
-                if(m_fst_val<rows2[i].tru){
-                  m_trd_val = m_snd_val;
-                  m_trd_emotion = m_snd_emotion;
-                  m_snd_val = m_fst_val;
-                  m_snd_emotion = m_fst_emotion;
-                  m_fst_val = rows2[i].tru;
-                  m_fst_emotion = '신뢰';
-                  recom_mno = rows2[i].mno;
-                } else if(m_snd_val<rows2[i].tru){
-                  m_trd_val = m_snd_val;
-                  m_trd_emotion = m_snd_emotion;
-                  m_snd_val = rows2[i].tru;
-                  m_snd_emotion = '신뢰';
-                } else if(m_trd_val<rows2[i].tru){
-                  m_trd_val = rows2[i].tru;
-                  m_trd_emotion = '신뢰';
+              if(rows[0].tru > 0){
+                if(fst_val<rows[0].tru){
+                  snd_val = fst_val;
+                  snd_emotion = fst_emotion;
+                  fst_val = rows[0].tru;
+                  fst_emotion = '신뢰';
+                } else if(snd_val<rows[0].tru){
+                  snd_val = rows[0].tru;
+                  snd_emotion = '신뢰';
                 }
+                tru_emotion_value = rows[0].tru * 100;
               }
-              if(rows2[i].fea > 0){
-                if(m_fst_val<rows2[i].fea){
-                  m_trd_val = m_snd_val;
-                  m_trd_emotion = m_snd_emotion;
-                  m_snd_val = m_fst_val;
-                  m_snd_emotion = m_fst_emotion;
-                  m_fst_val = rows2[i].fea;
-                  m_fst_emotion = '공포';
-                  recom_mno = rows2[i].mno;
-                } else if(m_snd_val<rows2[i].fea){
-                  m_trd_val = m_snd_val;
-                  m_trd_emotion = m_snd_emotion;
-                  m_snd_val = rows2[i].fea;
-                  m_snd_emotion = '공포';
-                } else if(m_trd_val<rows2[i].fea){
-                  m_trd_val = rows2[i].fea;
-                  m_trd_emotion = '공포';
+              if(rows[0].fea > 0){
+                if(fst_val<rows[0].fea){
+                  snd_val = fst_val;
+                  snd_emotion = fst_emotion;
+                  fst_val = rows[0].fea;
+                  fst_emotion = '공포';
+                } else if(snd_val<rows[0].fea){
+                  snd_val = rows[0].fea;
+                  snd_emotion = '공포';
                 }
+                fea_emotion_value = rows[0].fea * 100;
               }
-              if(rows2[i].sur > 0){
-                if(m_fst_val<rows2[i].sur){
-                  m_trd_val = m_snd_val;
-                  m_trd_emotion = m_snd_emotion;
-                  m_snd_val = m_fst_val;
-                  m_snd_emotion = m_fst_emotion;
-                  m_fst_val = rows2[i].sur;
-                  m_fst_emotion = '놀람';
-                  recom_mno = rows2[i].mno;
-                } else if(m_snd_val<rows2[i].sur){
-                  m_trd_val = m_snd_val;
-                  m_trd_emotion = m_snd_emotion;
-                  m_snd_val = rows2[i].sur;
-                  m_snd_emotion = '놀람';
-                } else if(m_trd_val<rows2[i].sur){
-                  m_trd_val = rows2[i].sur;
-                  m_trd_emotion = '놀람';
+              if(rows[0].sur > 0){
+                if(fst_val<rows[0].sur){
+                  snd_val = fst_val;
+                  snd_emotion = fst_emotion;
+                  fst_val = rows[0].sur;
+                  fst_emotion = '놀람';
+                } else if(snd_val<rows[0].sur){
+                  snd_val = rows[0].sur;
+                  snd_emotion = '놀람';
                 }
+                sur_emotion_value = rows[0].sur * 100;
               }
-              if(rows2[i].sad > 0){
-                if(m_fst_val<rows2[i].sad){
-                  m_trd_val = m_snd_val;
-                  m_trd_emotion = m_snd_emotion;
-                  m_snd_val = m_fst_val;
-                  m_snd_emotion = m_fst_emotion;
-                  m_fst_val = rows2[i].sad;
-                  m_fst_emotion = '슬픔';
-                  recom_mno = rows2[i].mno;
-                } else if(m_snd_val<rows2[i].sad){
-                  m_trd_val = m_snd_val;
-                  m_trd_emotion = m_snd_emotion;
-                  m_snd_val = rows2[i].sad;
-                  m_snd_emotion = '슬픔';
-                } else if(m_trd_val<rows2[i].sad){
-                  m_trd_val = rows2[i].sad;
-                  m_trd_emotion = '슬픔';
+              if(rows[0].sad > 0){
+                if(fst_val<rows[0].sad){
+                  snd_val = fst_val;
+                  snd_emotion = fst_emotion;
+                  fst_val = rows[0].sad;
+                  fst_emotion = '슬픔';
+                } else if(snd_val<rows[0].sad){
+                  snd_val = rows[0].sad;
+                  snd_emotion = '슬픔';
                 }
+                sad_emotion_value = rows[0].sad * 100;
               }
-              if(rows2[i].dis > 0){
-                if(m_fst_val<rows2[i].dis){
-                  m_trd_val = m_snd_val;
-                  m_trd_emotion = m_snd_emotion;
-                  m_snd_val = m_fst_val;
-                  m_snd_emotion = m_fst_emotion;
-                  m_fst_val = rows2[i].dis;
-                  m_fst_emotion = '혐오';
-                  recom_mno = rows2[i].mno;
-                } else if(m_snd_val<rows2[i].dis){
-                  m_trd_val = m_snd_val;
-                  m_trd_emotion = m_snd_emotion;
-                  m_snd_val = rows2[i].dis;
-                  m_snd_emotion = '혐오';
-                } else if(m_trd_val<rows2[i].dis){
-                  m_trd_val = rows2[i].dis;
-                  m_trd_emotion = '혐오';
+              if(rows[0].dis > 0){
+                if(fst_val<rows[0].dis){
+                  snd_val = fst_val;
+                  snd_emotion = fst_emotion;
+                  fst_val = rows[0].dis;
+                  fst_emotion = '혐오';
+                } else if(snd_val<rows[0].dis){
+                  snd_val = rows[0].dis;
+                  snd_emotion = '혐오';
                 }
+                dis_emotion_value = rows[0].dis * 100;
               }
-              if(rows2[i].ang > 0){
-                if(m_fst_val<rows2[i].ang){
-                  m_trd_val = m_snd_val;
-                  m_trd_emotion = m_snd_emotion;
-                  m_snd_val = m_fst_val;
-                  m_snd_emotion = m_fst_emotion;
-                  m_fst_val = rows2[i].ang;
-                  m_fst_emotion = '분노';
-                  recom_mno = rows2[i].mno;
-                } else if(m_snd_val<rows2[i].ang){
-                  m_trd_val = m_snd_val;
-                  m_trd_emotion = m_snd_emotion;
-                  m_snd_val = rows2[i].ang;
-                  m_snd_emotion = '분노';
-                } else if(m_trd_val<rows2[i].ang){
-                  m_trd_val = rows2[i].ang;
-                  m_trd_emotion = '분노';
+              if(rows[0].ang > 0){
+                if(fst_val<rows[0].ang){
+                  snd_val = fst_val;
+                  snd_emotion = fst_emotion;
+                  fst_val = rows[0].ang;
+                  fst_emotion = '분노';
+                } else if(snd_val<rows[0].ang){
+                  snd_val = rows[0].ang;
+                  snd_emotion = '분노';
                 }
+                ang_emotion_value = rows[0].ang * 100;
               }
-              m_list.push({m1_val:m_fst_val, m2_val:m_snd_val, m3_val:m_trd_val, m1_emo:m_fst_emotion, m2_emo:m_snd_emotion, m3_emo:m_trd_emotion, m_no:recom_mno});
+            } //else
 
-
-              if(m_fst_emotion==fst_emotion && m_snd_emotion==snd_emotion){
-                m_max_val = m_fst_val;
-                m_max_emotion = m_fst_emotion;
-                m_max_mno = recom_mno;
-                emotion_mno_list.push(recom_mno);
-              } else if(fst_emotion==m_snd_emotion || fst_emotion==m_trd_emotion){
-                sub_mno_list.push(recom_mno);
-                sub_rec_mno = recom_mno;
-              }
-            } //for
-
-            if(m_max_mno==-1){
-              m_max_mno = sub_rec_mno;
-            }
-
-            //var recom_list = [{list_title:'none', list_artist:'none', list_genre:'none', list_url:'none', list_mno:0}];
-
-            var queryString3 = 'SELECT * FROM music WHERE mno=?';
-            connection.query(queryString3, m_max_mno, function(err3, rows3){
-              if(err3){
-                console.log(err3);
-                console.log("here!");
+            var m_list = [{m1_val:0, m2_val:0, m3_val:0, m1_emo:'none', m2_emo:'none', m3_emo:'none', m_no:0}];
+            var emotion_mno_list = [-1];
+            var sub_mno_list = [-1];
+            var sub_rec_mno = Math.floor(Math.random()*80)+1;
+            var queryString2 = 'SELECT * FROM music_emotion';
+            connection.query(queryString2, function(err2, rows2){
+              if(err2){
+                console.log("here");
+                console.log(err2);
               } else{
-                //recom_list.push({list_title:rows3[0].title, list_artist:rows3[0].artist, list_genre:rows3[0].genre, list_url:rows3[0].url, list_mno:emotion_mno_list[t].mno_list})
-                recom_title = rows3[0].title;
-                recom_artist = rows3[0].artist;
-                recom_genre = rows3[0].genre;
-                recom_url = rows3[0].url;
-                var temp_url = recom_url.substr(32, 11);
-                recom_url = "https://www.youtube.com/embed/"+temp_url;
+                for(var i = 0; i < rows2.length; i++){
+                  recom_mno = 0;
+                  m_fst_emotion = 'none';
+                  m_snd_emotion = 'none';
+                  m_trd_emotion = 'none';
+                  m_fst_val = 0.0000;
+                  m_snd_val = 0.0000;
+                  m_trd_val = 0.0000;
 
-                res.render('blog-standard', {
-                  url: req.url,
-                  login: req.session.login,
-                  username: req.session.username,
-                  user_sentiment1: fst_emotion, user_sentiment2: snd_emotion,
-                  ant_val: ant_emotion_value, joy_val: joy_emotion_value, tru_val: tru_emotion_value, fea_val: fea_emotion_value, sur_val: sur_emotion_value, sad_val: sad_emotion_value, dis_val: dis_emotion_value, ang_val: ang_emotion_value,
-                  recom_mno: m_max_mno,recom_1: m_max_emotion,
-                  recom_title: recom_title,
-                  recom_artist: recom_artist,
-                  recom_genre: recom_genre,
-                  recom_url: recom_url
-                });
+                  if(rows2[i].ant > 0){
+                    if(m_fst_val<rows2[i].ant){
+                      m_trd_val = m_snd_val;
+                      m_trd_emotion = m_snd_emotion;
+                      m_snd_val = m_fst_val;
+                      m_snd_emotion = m_fst_emotion;
+                      m_fst_val = rows2[i].ant;
+                      m_fst_emotion = '기대';
+                      recom_mno = rows2[i].mno;
+                    } else if(m_snd_val<rows2[i].ant){
+                      m_trd_val = m_snd_val;
+                      m_trd_emotion = m_snd_emotion;
+                      m_snd_val = rows2[i].ant;
+                      m_snd_emotion = '기대';
+                    } else if(m_trd_val<rows2[i].ant){
+                      m_trd_val = rows2[i].ant;
+                      m_trd_emotion = '기대';
+                    }
+                  }
+                  if(rows2[i].joy > 0){
+                    if(m_fst_val<rows2[i].joy){
+                      m_trd_val = m_snd_val;
+                      m_trd_emotion = m_snd_emotion;
+                      m_snd_val = m_fst_val;
+                      m_snd_emotion = m_fst_emotion;
+                      m_fst_val = rows2[i].joy;
+                      m_fst_emotion = '기쁨';
+                      recom_mno = rows2[i].mno;
+                    } else if(m_snd_val<rows2[i].joy){
+                      m_trd_val = m_snd_val;
+                      m_trd_emotion = m_snd_emotion;
+                      m_snd_val = rows2[i].joy;
+                      m_snd_emotion = '기쁨';
+                    } else if(m_trd_val<rows2[i].joy){
+                      m_trd_val = rows2[i].joy;
+                      m_trd_emotion = '기쁨';
+                    }
+                  }
+                  if(rows2[i].tru > 0){
+                    if(m_fst_val<rows2[i].tru){
+                      m_trd_val = m_snd_val;
+                      m_trd_emotion = m_snd_emotion;
+                      m_snd_val = m_fst_val;
+                      m_snd_emotion = m_fst_emotion;
+                      m_fst_val = rows2[i].tru;
+                      m_fst_emotion = '신뢰';
+                      recom_mno = rows2[i].mno;
+                    } else if(m_snd_val<rows2[i].tru){
+                      m_trd_val = m_snd_val;
+                      m_trd_emotion = m_snd_emotion;
+                      m_snd_val = rows2[i].tru;
+                      m_snd_emotion = '신뢰';
+                    } else if(m_trd_val<rows2[i].tru){
+                      m_trd_val = rows2[i].tru;
+                      m_trd_emotion = '신뢰';
+                    }
+                  }
+                  if(rows2[i].fea > 0){
+                    if(m_fst_val<rows2[i].fea){
+                      m_trd_val = m_snd_val;
+                      m_trd_emotion = m_snd_emotion;
+                      m_snd_val = m_fst_val;
+                      m_snd_emotion = m_fst_emotion;
+                      m_fst_val = rows2[i].fea;
+                      m_fst_emotion = '공포';
+                      recom_mno = rows2[i].mno;
+                    } else if(m_snd_val<rows2[i].fea){
+                      m_trd_val = m_snd_val;
+                      m_trd_emotion = m_snd_emotion;
+                      m_snd_val = rows2[i].fea;
+                      m_snd_emotion = '공포';
+                    } else if(m_trd_val<rows2[i].fea){
+                      m_trd_val = rows2[i].fea;
+                      m_trd_emotion = '공포';
+                    }
+                  }
+                  if(rows2[i].sur > 0){
+                    if(m_fst_val<rows2[i].sur){
+                      m_trd_val = m_snd_val;
+                      m_trd_emotion = m_snd_emotion;
+                      m_snd_val = m_fst_val;
+                      m_snd_emotion = m_fst_emotion;
+                      m_fst_val = rows2[i].sur;
+                      m_fst_emotion = '놀람';
+                      recom_mno = rows2[i].mno;
+                    } else if(m_snd_val<rows2[i].sur){
+                      m_trd_val = m_snd_val;
+                      m_trd_emotion = m_snd_emotion;
+                      m_snd_val = rows2[i].sur;
+                      m_snd_emotion = '놀람';
+                    } else if(m_trd_val<rows2[i].sur){
+                      m_trd_val = rows2[i].sur;
+                      m_trd_emotion = '놀람';
+                    }
+                  }
+                  if(rows2[i].sad > 0){
+                    if(m_fst_val<rows2[i].sad){
+                      m_trd_val = m_snd_val;
+                      m_trd_emotion = m_snd_emotion;
+                      m_snd_val = m_fst_val;
+                      m_snd_emotion = m_fst_emotion;
+                      m_fst_val = rows2[i].sad;
+                      m_fst_emotion = '슬픔';
+                      recom_mno = rows2[i].mno;
+                    } else if(m_snd_val<rows2[i].sad){
+                      m_trd_val = m_snd_val;
+                      m_trd_emotion = m_snd_emotion;
+                      m_snd_val = rows2[i].sad;
+                      m_snd_emotion = '슬픔';
+                    } else if(m_trd_val<rows2[i].sad){
+                      m_trd_val = rows2[i].sad;
+                      m_trd_emotion = '슬픔';
+                    }
+                  }
+                  if(rows2[i].dis > 0){
+                    if(m_fst_val<rows2[i].dis){
+                      m_trd_val = m_snd_val;
+                      m_trd_emotion = m_snd_emotion;
+                      m_snd_val = m_fst_val;
+                      m_snd_emotion = m_fst_emotion;
+                      m_fst_val = rows2[i].dis;
+                      m_fst_emotion = '혐오';
+                      recom_mno = rows2[i].mno;
+                    } else if(m_snd_val<rows2[i].dis){
+                      m_trd_val = m_snd_val;
+                      m_trd_emotion = m_snd_emotion;
+                      m_snd_val = rows2[i].dis;
+                      m_snd_emotion = '혐오';
+                    } else if(m_trd_val<rows2[i].dis){
+                      m_trd_val = rows2[i].dis;
+                      m_trd_emotion = '혐오';
+                    }
+                  }
+                  if(rows2[i].ang > 0){
+                    if(m_fst_val<rows2[i].ang){
+                      m_trd_val = m_snd_val;
+                      m_trd_emotion = m_snd_emotion;
+                      m_snd_val = m_fst_val;
+                      m_snd_emotion = m_fst_emotion;
+                      m_fst_val = rows2[i].ang;
+                      m_fst_emotion = '분노';
+                      recom_mno = rows2[i].mno;
+                    } else if(m_snd_val<rows2[i].ang){
+                      m_trd_val = m_snd_val;
+                      m_trd_emotion = m_snd_emotion;
+                      m_snd_val = rows2[i].ang;
+                      m_snd_emotion = '분노';
+                    } else if(m_trd_val<rows2[i].ang){
+                      m_trd_val = rows2[i].ang;
+                      m_trd_emotion = '분노';
+                    }
+                  }
+                  m_list.push({m1_val:m_fst_val, m2_val:m_snd_val, m3_val:m_trd_val, m1_emo:m_fst_emotion, m2_emo:m_snd_emotion, m3_emo:m_trd_emotion, m_no:recom_mno});
+
+
+                  if(m_fst_emotion==fst_emotion && m_snd_emotion==snd_emotion){
+                    m_max_val = m_fst_val;
+                    m_max_emotion = m_fst_emotion;
+                    m_max_mno = recom_mno;
+                    emotion_mno_list.push(recom_mno);
+                  } else if(fst_emotion==m_snd_emotion || fst_emotion==m_trd_emotion){
+                    sub_mno_list.push(recom_mno);
+                    sub_rec_mno = recom_mno;
+                  }
+                } //for
+
+                if(m_max_mno==-1){
+                  m_max_mno = sub_rec_mno;
+                }
+
+                //var recom_list = [{list_title:'none', list_artist:'none', list_genre:'none', list_url:'none', list_mno:0}];
+
+                var queryString3 = 'SELECT * FROM music WHERE mno=?';
+                connection.query(queryString3, m_max_mno, function(err3, rows3){
+                  if(err3){
+                    console.log(err3);
+                    console.log("here!");
+                  } else{
+                    //recom_list.push({list_title:rows3[0].title, list_artist:rows3[0].artist, list_genre:rows3[0].genre, list_url:rows3[0].url, list_mno:emotion_mno_list[t].mno_list})
+                    recom_title = rows3[0].title;
+                    recom_artist = rows3[0].artist;
+                    recom_genre = rows3[0].genre;
+                    recom_url = rows3[0].url;
+                    var temp_url = recom_url.substr(32, 11);
+                    recom_url = "https://www.youtube.com/embed/"+temp_url;
+
+                    res.render('blog-standard', {
+                      url: req.url,
+                      login: req.session.login,
+                      username: req.session.username,
+                      user_sentiment1: fst_emotion, user_sentiment2: snd_emotion,
+                      ant_val: ant_emotion_value, joy_val: joy_emotion_value, tru_val: tru_emotion_value, fea_val: fea_emotion_value, sur_val: sur_emotion_value, sad_val: sad_emotion_value, dis_val: dis_emotion_value, ang_val: ang_emotion_value,
+                      recom_mno: m_max_mno,recom_1: m_max_emotion,
+                      recom_title: recom_title,
+                      recom_artist: recom_artist,
+                      recom_genre: recom_genre,
+                      recom_url: recom_url,
+                      usertwtid: usertwtid
+                    });
+                  } //else
+                });//connection3
+    
               } //else
-            });//connection3
+            });//connection2
 
-          } //else
-        });//connection2
+        });//connection1
 
-    });//connection1
+      }
+    });
+
   })
 
   router.get('/blog2', function(req, res){

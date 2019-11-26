@@ -308,7 +308,11 @@
                   }
               </script>
             <div id="employee_piechart" style="width: 900px; height: 500px;"></div>
-              <%- username %>님의 최근 감정 상태는 <b><%- user_sentiment1 %></b>, <b><%- user_sentiment2 %></b>이며,<br>
+              <%- username %>님의 최근 감정 상태는 <b><%- user_sentiment1 %></b>
+              <% if(user_sentiment2) { %>
+                , <b><%- user_sentiment2 %></b>
+              <% } %>
+              이며,<br>
               아래는 <%- username %>님의 최근 감정 상태를 기반으로 추천된 노래입니다.<br>
               링크를 클릭하시면 해당 곡을 감상하실 수 있습니다.<br><br>
               <%- recom_artist %> - <%- recom_title %> (장르 : <%- recom_genre %>) <br>

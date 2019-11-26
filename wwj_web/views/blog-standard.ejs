@@ -309,7 +309,7 @@
               </script>
             <div id="employee_piechart" style="width: 900px; height: 500px;"></div>
               <%- username %>님의 최근 감정 상태는 <b><%- user_sentiment1 %></b>
-              <% if(user_sentiment2) { %>
+              <% if(user_sentiment2 != 'none') { %>
                 , <b><%- user_sentiment2 %></b>
               <% } %>
               이며,<br>
